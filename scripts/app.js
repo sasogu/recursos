@@ -9,10 +9,9 @@ import {
 import { clearSelect, fillSelect, updateSelectLabels, buildCard } from "./render.js";
 import {
   initPreferenceBackend, loadSubmissions,
-  signInWithGoogle, signOutFromGoogle,
   toggleFavoritePreference, setRatingPreference, reportBroken,
-  isAdmin, currentUserDisplayName,
-} from "./firebase.js";
+  isAdmin, submitActivity,
+} from "./api.js";
 
 const dataUrl = "./data/games.json";
 const homeDataUrl = "./data/games-home.json";
@@ -40,14 +39,13 @@ const offlineBanner = document.querySelector("#offlineBanner");
 const personalPrefsNote = document.querySelector("#personalPrefsNote");
 const authPanel = document.querySelector("#authPanel");
 const authStatus = document.querySelector("#authStatus");
-const signInGoogleBtn = document.querySelector("#signInGoogleBtn");
-const signOutBtn = document.querySelector("#signOutBtn");
 const submitActivityBtn = document.querySelector("#submitActivityBtn");
 const submitDialog = document.querySelector("#submitDialog");
 const submitForm = document.querySelector("#submitForm");
 const submitTitleInput = document.querySelector("#submitTitle");
 const submitUrlInput = document.querySelector("#submitUrl");
 const submitNotesInput = document.querySelector("#submitNotes");
+const submitNameInput = document.querySelector("#submitName");
 const submitAreaSelect = document.querySelector("#submitArea");
 const submitLanguageSelect = document.querySelector("#submitLanguage");
 const submitCancelBtn = document.querySelector("#submitCancelBtn");
@@ -67,7 +65,7 @@ registerServiceWorker();
 updateSwVersionFromSource();
 initOfflineBanner(offlineBanner, i18n);
 
-// Let firebase.js notify app.js when auth state changes.
+// Let api.js notify app.js when auth state changes.
 state._onAuthChange = () => {
   updateAuthUi();
   updatePreferencesNote();
@@ -94,7 +92,7 @@ async function boot() {
   readFiltersFromUrl({ searchInput, levelFilter, languageFilter, areaFilter, ratingFilter, favoritesOnly });
   render();
 
-  if (state.firebase) {
+  if (state.backendMode === "remote") {
     loadSubmissions()
       .then(() => { hydrateFilterOptions(); render(); })
       .catch((err) => console.warn("Error en carregar propostes", err));
@@ -211,9 +209,9 @@ function setReportBanner(report) {
 }
 
 function updateAuthUi() {
-  if (!authPanel || !authStatus || !signInGoogleBtn || !signOutBtn) return;
+  if (!authPanel || !authStatus) return;
 
-  if (state.backendMode !== "firebase" || !state.firebase) {
+  if (state.backendMode !== "remote") {
     authPanel.classList.add("hidden");
     authStatus.textContent = i18n("auth_status_local");
     if (submitActivityBtn) submitActivityBtn.classList.add("hidden");
@@ -221,31 +219,7 @@ function updateAuthUi() {
   }
 
   authPanel.classList.remove("hidden");
-  const user = state.firebase.auth.currentUser;
-  const googleEnabled = Boolean(state.firebase.googleAuthEnabled);
-  const isAnonymous = !user || user.isAnonymous;
-
-  if (!state.authReady) {
-    authStatus.textContent = i18n("auth_loading");
-    signInGoogleBtn.classList.add("hidden");
-    signOutBtn.classList.add("hidden");
-    if (submitActivityBtn) submitActivityBtn.classList.add("hidden");
-    return;
-  }
-
-  if (isAnonymous) {
-    authStatus.textContent = googleEnabled
-      ? i18n("auth_status_google_available")
-      : i18n("auth_status_google_disabled");
-    signInGoogleBtn.classList.toggle("hidden", !googleEnabled);
-    signOutBtn.classList.add("hidden");
-    if (submitActivityBtn) submitActivityBtn.classList.add("hidden");
-    return;
-  }
-
-  authStatus.textContent = i18n("auth_status_google", currentUserDisplayName(user));
-  signInGoogleBtn.classList.add("hidden");
-  signOutBtn.classList.remove("hidden");
+  authStatus.textContent = isAdmin() ? i18n("auth_status_admin") : i18n("auth_status_anon");
   if (submitActivityBtn) submitActivityBtn.classList.remove("hidden");
   if (brokenOnlyLabel) brokenOnlyLabel.classList.toggle("hidden", !isAdmin());
   if (reportedOnlyLabel) reportedOnlyLabel.classList.toggle("hidden", !isAdmin());
@@ -272,12 +246,10 @@ function applyStaticTranslations() {
 
 function updatePreferencesNote() {
   if (!personalPrefsNote) return;
-  const isGoogleUser = state.backendMode === "firebase"
-    && state.firebase?.auth.currentUser
-    && !state.firebase.auth.currentUser.isAnonymous;
-  const key = isGoogleUser ? "personal_prefs_note_firebase" : "personal_prefs_note_local";
+  const isRemote = state.backendMode === "remote";
+  const key = isRemote ? "personal_prefs_note_remote" : "personal_prefs_note_local";
   personalPrefsNote.textContent = i18n(key);
-  personalPrefsNote.classList.toggle("remote", isGoogleUser);
+  personalPrefsNote.classList.toggle("remote", isRemote);
 }
 
 function wireEvents() {
@@ -291,36 +263,6 @@ function wireEvents() {
   if (reportedOnly) reportedOnly.addEventListener("change", render);
   ratingFilter.addEventListener("change", render);
   loadMoreBtn.addEventListener("click", showMore);
-
-  if (signInGoogleBtn) {
-    signInGoogleBtn.addEventListener("click", async () => {
-      signInGoogleBtn.disabled = true;
-      try {
-        await signInWithGoogle();
-        render();
-      } catch (error) {
-        console.error(i18n("auth_error_google"), error);
-      } finally {
-        signInGoogleBtn.disabled = false;
-        updateAuthUi();
-      }
-    });
-  }
-
-  if (signOutBtn) {
-    signOutBtn.addEventListener("click", async () => {
-      signOutBtn.disabled = true;
-      try {
-        await signOutFromGoogle();
-        render();
-      } catch (error) {
-        console.error("No se pudo cerrar sesion", error);
-      } finally {
-        signOutBtn.disabled = false;
-        updateAuthUi();
-      }
-    });
-  }
 
   if (submitActivityBtn) submitActivityBtn.addEventListener("click", openSubmitDialog);
   if (submitCancelBtn) submitCancelBtn.addEventListener("click", () => submitDialog?.close());
@@ -369,17 +311,14 @@ function openSubmitDialog() {
 
 async function handleSubmitForm(e) {
   e.preventDefault();
-  if (!state.firebase) return;
-
-  const { auth, addDoc, collection, db, serverTimestamp } = state.firebase;
-  const user = auth.currentUser;
-  if (!user || user.isAnonymous) return;
+  if (state.backendMode !== "remote") return;
 
   const title = submitTitleInput?.value.trim() || "";
   const url = submitUrlInput?.value.trim() || "";
   const notes = submitNotesInput?.value.trim() || "";
   const area = submitAreaSelect?.value || "General";
   const language = submitLanguageSelect?.value || "";
+  const name = submitNameInput?.value.trim() || "";
 
   if (!title || !url) return;
 
@@ -387,11 +326,7 @@ async function handleSubmitForm(e) {
   showSubmitFeedback(i18n("submit_loading"), "");
 
   try {
-    await addDoc(collection(db, "submissions"), {
-      title, url, notes, area, language,
-      submittedBy: { uid: user.uid, name: user.displayName || user.email || "" },
-      submittedAt: serverTimestamp(),
-    });
+    await submitActivity({ title, url, notes, area, language, name });
     showSubmitFeedback(i18n("submit_success"), "ok");
     submitForm?.reset();
     await loadSubmissions();

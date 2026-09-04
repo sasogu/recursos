@@ -85,7 +85,7 @@ export function uniqueLanguageValues(items) {
 }
 
 export function getRatingForFilter(gameKeyValue) {
-  if (state.backendMode === "firebase") {
+  if (state.backendMode === "remote") {
     return state.ratingSummary.get(gameKeyValue)?.avg || 0;
   }
   return state.userRatings.get(gameKeyValue) || 0;

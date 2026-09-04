@@ -2,7 +2,7 @@ import { i18n, areaLabel, languageLabel, levelLabel, getLang } from "./i18n.js";
 import { openFlashDialog } from "./flash.js";
 import { state, DEFAULT_GAME_IMAGE, REPORT_THRESHOLD } from "./state.js";
 import { normalizeUrl, gameKey, gameLanguages, gameLanguageText } from "./filters.js";
-import { isAdmin } from "./firebase.js";
+import { isAdmin } from "./api.js";
 
 export function clearSelect(select) {
   select.querySelectorAll("option:not([value=''])").forEach((o) => o.remove());
@@ -123,9 +123,7 @@ export function createFavoriteButton(gameKeyValue, isFavorite, { onToggle, onRen
 }
 
 export function createReportButton(gameKeyValue, article, { onReport, onRender }) {
-  if (state.backendMode !== "firebase") return null;
-  const user = state.firebase?.auth.currentUser;
-  if (!user) return null;
+  if (state.backendMode !== "remote") return null;
 
   const alreadyReported = state.userReports.has(gameKeyValue);
   const button = document.createElement("button");
@@ -174,7 +172,7 @@ export function createRatingControl(gameKeyValue, selectedRating, ratingSummary,
   label.textContent = i18n("rating_label");
   wrapper.appendChild(label);
 
-  if (state.backendMode === "firebase") {
+  if (state.backendMode === "remote") {
     const summary = document.createElement("span");
     summary.className = "rating-summary";
     summary.textContent = formatRatingSummary(ratingSummary);

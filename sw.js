@@ -1,4 +1,4 @@
-const CACHE_NAME = "bibliojocs-v1.0.3";
+const CACHE_NAME = "bibliojocs-v1.1.0";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -7,6 +7,7 @@ const APP_SHELL = [
   "./sitemap.xml",
   "./styles/site.css",
   "./scripts/app.js",
+  "./scripts/api.js",
   "./scripts/i18n.js",
   "./data/games-home.json",
   "./data/games.json",

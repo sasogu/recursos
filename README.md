@@ -1,6 +1,6 @@
 # Bibliojocs
 
-Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàtic (HTML + CSS + JS pur) amb sincronització opcional via Firebase.
+Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàtic (HTML + CSS + JS pur) amb sincronització via API autoalojada (FastAPI + SQLite).
 
 🌐 **Producció**: [edutictac.es](https://edutictac.es)
 
@@ -14,7 +14,7 @@ Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàt
 - [Importació de continguts](#importació-de-continguts)
 - [Captura d'imatges](#captura-dimatges)
 - [Verificació d'enllaços](#verificació-denllaços)
-- [Firebase](#firebase)
+- [API autoalojada](#api-autoalojada-substitució-de-firebase)
 - [Deploy](#deploy)
 
 ---
@@ -23,7 +23,6 @@ Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàt
 
 ```
 ├── index.html                  Pàgina principal
-├── firebase-config.js          Credencials Firebase (NO està en git)
 ├── sw.js                       Service Worker (PWA)
 ├── data/
 │   ├── games.json              Catàleg principal d'activitats
@@ -167,91 +166,42 @@ El workflow `.github/workflows/link-check.yml` executa la verificació diàriame
 
 ---
 
-## Firebase
+## API autoalojada (substitució de Firebase)
 
 La app funciona en dos modes:
 
 | Mode | Favorits | Valoracions | Sincronització |
 |------|----------|-------------|----------------|
 | Local (per defecte) | localStorage | localStorage | No |
-| Firebase | Firestore per usuari | Firestore compartides | Sí (tots els dispositius) |
+| Remot | API pròpia per usuari | API pròpia compartides | Sí (tots els dispositius) |
 
-### 1. Configurar `firebase-config.js`
+La sincronització en el núvol ja **no usa Firebase**: es fa contra una API REST
+pròpia (FastAPI + SQLite) servida a `bibliojocs.edutictac.es/api/` (migració
+2026-09-04, repositori `Edutictac/bibliojocs-api`).
 
-Crea el fitxer `firebase-config.js` a l'arrel del projecte (no està en git):
+- La URL de l'API es pot sobreescriure amb `window.EDUBIBLIOJOCS_API_BASE`
+  (per defecte `/api`, mateix origen).
+- Identitat **anònima per cookie** (sense Google).
+- **Mode admin**: obre `https://bibliojocs.edutictac.es/?admin=TOKEN` amb el
+  token d'administrador. Activa els filtres "No funciona (admin)" i
+  "Reportades (admin)".
 
-```js
-export const firebaseSettings = {
-  enabled: true,
-  googleAuthEnabled: true,
-  adminEmail: "el-teu-email@gmail.com",  // email de l'administrador
-};
-
-export const firebaseConfig = {
-  apiKey: "...",
-  authDomain: "...",
-  projectId: "...",
-  storageBucket: "...",
-  messagingSenderId: "...",
-  appId: "...",
-};
-```
-
-### 2. Activar serveis a Firebase Console
-
-1. **Authentication → Sign-in method** → habilita `Anonymous`
-2. **Authentication → Sign-in method** → habilita `Google` (si vols comptes)
-3. **Authentication → Settings → Authorized domains** → afegeix el teu domini
-4. **Firestore Database** → crea la base de dades en mode producció
-
-### 3. Regles de Firestore
-
-```js
-rules_version = '2';
-service cloud.firestore {
-  match /databases/{database}/documents {
-
-    match /users/{userId}/{document=**} {
-      allow read, write: if request.auth != null && request.auth.uid == userId;
-    }
-
-    match /ratingSummary/{gameId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null
-                   && request.auth.token.firebase.sign_in_provider != 'anonymous';
-    }
-
-    match /brokenReports/{gameId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null
-                   && request.auth.token.firebase.sign_in_provider != 'anonymous';
-    }
-
-    match /submissions/{submissionId} {
-      allow read: if request.auth != null;
-      allow write: if request.auth != null
-                   && request.auth.token.firebase.sign_in_provider != 'anonymous';
-    }
-  }
-}
-```
-
-### 4. Estructura de dades a Firestore
+### Estructura de dades (SQLite)
 
 ```
-users/{uid}/favorites/{gameId}       → favorits per usuari
-users/{uid}/ratings/{gameId}         → valoració personal (value: 1-5)
-users/{uid}/reports/{gameId}         → reportes "no funciona" per usuari
-ratingSummary/{gameId}               → {avg, count} valoració agregada
-brokenReports/{gameId}               → {count, adminReported} reportes agregats
-submissions/{submissionId}           → activitats proposades pels usuaris
+favorites(user_id, game_key)      → favorits per usuari
+ratings(user_id, game_key, value) → valoració personal (1-5)
+reports(user_id, game_key)        → reportes "no funciona" per usuari
+rating_summary(game_key, sum, count, avg) → valoració agregada
+broken_reports(game_key, count, admin_reported) → reportes agregats
+submissions(id, title, url, ...)  → activitats proposades pels usuaris
 ```
 
-### 5. Funcions d'administrador
+### Funcions d'administrador
 
-L'usuari amb l'email configurat a `adminEmail` té accés a:
+El mode admin permet veure:
 
-- **Filtre "No funciona (admin)"**: activitats amagades (≥ 3 reports d'usuaris o marcades per l'admin). L'admin pot marcar una activitat i desapareix immediatament per a tothom.
+- **Filtre "No funciona (admin)"**: activitats amagades (≥ 3 reports d'usuaris o marcades per l'admin).
 - **Filtre "Reportades (admin)"**: activitats amb 1-2 reports, visibles però vigilades.
 
 ---
