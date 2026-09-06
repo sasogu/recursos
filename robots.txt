@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bibliojocs.edutictac.es/sitemap.xml
+Sitemap: https://recursos.edutictac.es/sitemap.xml

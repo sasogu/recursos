@@ -93,7 +93,7 @@ async function checkUrl(url) {
     redirect: "follow",
     signal: controller.signal,
     headers: {
-      "user-agent": "BibliojocsLinkChecker/1.0 (+https://bibliojocs.edutictac.es/)"
+      "user-agent": "BibliojocsLinkChecker/1.0 (+https://recursos.edutictac.es/)"
     }
   };
 
