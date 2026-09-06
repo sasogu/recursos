@@ -1,8 +1,8 @@
-# Bibliojocs
+# Banc de recursos
 
 Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàtic (HTML + CSS + JS pur) amb sincronització via API autoalojada (FastAPI + SQLite).
 
-🌐 **Producció**: [edutictac.es](https://edutictac.es)
+🌐 **Producció**: [recursos.edutictac.es](https://recursos.edutictac.es)
 
 ---
 
@@ -176,13 +176,13 @@ La app funciona en dos modes:
 | Remot | API pròpia per usuari | API pròpia compartides | Sí (tots els dispositius) |
 
 La sincronització en el núvol ja **no usa Firebase**: es fa contra una API REST
-pròpia (FastAPI + SQLite) servida a `bibliojocs.edutictac.es/api/` (migració
+pròpia (FastAPI + SQLite) servida a `recursos.edutictac.es/api/` (migració
 2026-09-04, repositori `Edutictac/bibliojocs-api`).
 
 - La URL de l'API es pot sobreescriure amb `window.EDUBIBLIOJOCS_API_BASE`
   (per defecte `/api`, mateix origen).
 - Identitat **anònima per cookie** (sense Google).
-- **Mode admin**: obre `https://bibliojocs.edutictac.es/?admin=TOKEN` amb el
+- **Mode admin**: obre `https://recursos.edutictac.es/?admin=TOKEN` amb el
   token d'administrador. Activa els filtres "No funciona (admin)" i
   "Reportades (admin)".
 
