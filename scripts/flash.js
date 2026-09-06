@@ -1,4 +1,4 @@
-const RUFFLE_CDN = "https://unpkg.com/@ruffle-rs/ruffle";
+const RUFFLE_SRC = "./assets/ruffle/ruffle.js";
 
 const flashDialog = document.querySelector("#flashDialog");
 const flashClose = document.querySelector("#flashClose");
@@ -78,7 +78,7 @@ async function loadRuffle() {
   if (window.RufflePlayer) return window.RufflePlayer.newest();
   await new Promise((resolve, reject) => {
     const s = document.createElement("script");
-    s.src = RUFFLE_CDN;
+    s.src = RUFFLE_SRC;
     s.onload = resolve;
     s.onerror = reject;
     document.head.appendChild(s);

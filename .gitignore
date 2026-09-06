@@ -4,3 +4,4 @@ scripts/deploy.sh
 assets/flash/
 data/archive-flash-state.json
 backups/
+assets/ruffle/
