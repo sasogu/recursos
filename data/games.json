@@ -25215,5 +25215,18 @@
   ],
   "flash": true,
   "image": "assets/game-images/archive-index-20230910.jpg"
+ },
+ {
+  "id": "cisco-it-essentials-virtual-desktop",
+  "title": "Cisco IT Essentials: Virtual Desktop",
+  "area": "Informatica",
+  "language": "Inglés",
+  "url": "assets/flash/cisco/RootMovie.swf?lesson=1&mode=0",
+  "notes": "Simulador interactivo para aprender a montar un ordenador paso a paso: fuente de alimentación, placa base, tarjetas, discos y cables (7 lecciones). En inglés.",
+  "levels": [
+   "Secundaria"
+  ],
+  "flash": true,
+  "image": "assets/game-images/cisco-it-essentials-virtual-desktop.png"
  }
 ]
