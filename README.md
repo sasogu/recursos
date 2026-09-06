@@ -50,8 +50,8 @@ Directori de jocs educatius per a Infantil, Primària i Secundària. Lloc estàt
 ## Instal·lació
 
 ```bash
-git clone https://github.com/sasogu/edubibliojocs.git
-cd edubibliojocs
+git clone https://github.com/sasogu/recursos.git
+cd recursos
 npm install
 ```
 
@@ -177,7 +177,7 @@ La app funciona en dos modes:
 
 La sincronització en el núvol ja **no usa Firebase**: es fa contra una API REST
 pròpia (FastAPI + SQLite) servida a `recursos.edutictac.es/api/` (migració
-2026-09-04, repositori `Edutictac/bibliojocs-api`).
+2026-09-04, repositori `Edutictac/recursos-api`).
 
 - La URL de l'API es pot sobreescriure amb `window.EDUBIBLIOJOCS_API_BASE`
   (per defecte `/api`, mateix origen).
@@ -233,7 +233,7 @@ npm run deploy:dry
 | `DEPLOY_HOST` | `edutictac.es` | Host del servidor |
 | `DEPLOY_USER` | `samgua` | Usuari SSH |
 | `DEPLOY_PORT` | `2222` | Port SSH |
-| `DEPLOY_PATH` | `/var/www/bibliojocs` | Ruta remota |
+| `DEPLOY_PATH` | `/var/www/recursos` | Ruta remota |
 | `DEPLOY_SSH_KEY` | — | Clau privada SSH |
 | `DRY_RUN=1` | — | Simula sense copiar |
 | `SKIP_LINKS=1` | — | Omet la verificació d'enllaços |

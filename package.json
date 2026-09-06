@@ -1,5 +1,5 @@
 {
-  "name": "bibliojocs-static",
+  "name": "recursos-static",
   "version": "1.0.0",
   "private": true,
   "description": "Directorio estatico de juegos educativos con chequeo de enlaces.",
@@ -22,9 +22,9 @@
     "import:flash:dry": "node ./scripts/import-archive-flash.mjs --dry-run",
     "import:flash:apply": "node ./scripts/import-archive-flash.mjs --apply",
     "capture:flash": "node ./scripts/capture-archive-thumbnails.mjs",
-    "deploy": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/bibliojocs DEPLOY_SSH_CONFIG=/dev/null bash ./scripts/deploy.sh",
-    "deploy:fast": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/bibliojocs DEPLOY_SSH_CONFIG=/dev/null SKIP_LINKS=1 bash ./scripts/deploy.sh",
-    "deploy:dry": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/bibliojocs DEPLOY_SSH_CONFIG=/dev/null DRY_RUN=1 bash ./scripts/deploy.sh"
+    "deploy": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/recursos DEPLOY_SSH_CONFIG=/dev/null bash ./scripts/deploy.sh",
+    "deploy:fast": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/recursos DEPLOY_SSH_CONFIG=/dev/null SKIP_LINKS=1 bash ./scripts/deploy.sh",
+    "deploy:dry": "DEPLOY_HOST=edutictac.es DEPLOY_USER=samgua DEPLOY_PORT=2222 DEPLOY_PATH=/var/www/recursos DEPLOY_SSH_CONFIG=/dev/null DRY_RUN=1 bash ./scripts/deploy.sh"
   },
   "engines": {
     "node": ">=18"
