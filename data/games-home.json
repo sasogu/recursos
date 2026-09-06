@@ -1,18 +1,5 @@
 [
   {
-    "id": "como-dice-que-dijo",
-    "title": "¿Cómo dice que dijo?",
-    "area": "Lengua",
-    "language": "Castellano",
-    "url": "https://www.comodicequedijo.com/juegos/?ref=cta-homepage",
-    "notes": "Ortografía",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "image": "assets/game-images/como-dice-que-dijo.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/Screenshot_20200128_094146.png"
-  },
-  {
     "id": "activitats-de-matematiques",
     "title": "Activitats de Matemàtiques",
     "area": "Matematicas",
@@ -26,45 +13,6 @@
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/Como_ingresar_a_Thatquiz.png"
   },
   {
-    "id": "adivinanzas",
-    "title": "Adivinanzas",
-    "area": "Lengua",
-    "language": "Castellano",
-    "url": "http://www.aplicaciones.info/adivina/adivina.htm",
-    "notes": "Adivinanzas interactivas",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/adivinanzas.jpg",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/Adivinanzas.jpg"
-  },
-  {
-    "id": "ajedrez-online",
-    "title": "Ajedrez online",
-    "area": "Matematicas",
-    "language": "Castellano",
-    "url": "https://www.chess.com/es/play/computer",
-    "notes": "Ajedrez para jugar contra un ordenador , con 10 niveles de dificultad.",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/ajedrez-online.jpg",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/Ajedrez-no-flash.jpg"
-  },
-  {
-    "id": "aprendo-musica",
-    "title": "Aprendo Música",
-    "area": "Musica",
-    "language": "Ingles",
-    "url": "https://www.aprendomusica.com/",
-    "notes": "Importado desde listado de WordPress",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "image": "assets/game-images/aprendo-musica.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/Screenshot_20200128_093733.png"
-  },
-  {
     "id": "blockly-laberint",
     "title": "Blockly: Laberintmòbil",
     "area": "Matematicas",
@@ -76,32 +24,6 @@
     ],
     "image": "assets/game-images/blockly-laberint.jpg",
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/blockly.jpg"
-  },
-  {
-    "id": "bomomo",
-    "title": "Bomomo",
-    "area": "Manualitats",
-    "language": "Català/Valencià",
-    "url": "https://bomomo.com/",
-    "notes": "Per a pintar&#8230;",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/bomomo.jpeg",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/Captura-realizada-el-2020-01-26-09.15.56.jpeg"
-  },
-  {
-    "id": "caracol-bob",
-    "title": "CARACOL BOB",
-    "area": "Logica",
-    "language": "Castellano",
-    "url": "https://www.juegos.com/juego/caracol-bob",
-    "notes": "Demuestra tu ingenio salvando al caracol Bob",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/caracol-bob.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2021/06/2021-06-25_21-39.png"
   },
   {
     "id": "code-org",
@@ -208,19 +130,6 @@
     "imageSource": "https://sasogu.github.io/EduZop/"
   },
   {
-    "id": "el-buho-boo",
-    "title": "EL BUHO BOO",
-    "area": "Manualitats",
-    "language": "Castellano",
-    "url": "https://www.elbuhoboo.com/",
-    "notes": "JOCS DE PINTAR I RATOLÍ",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/el-buho-boo.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/Captura-de-pantalla_2020-03-28_12-59-43.png"
-  },
-  {
     "id": "geosapiens",
     "title": "GeoSapiens",
     "area": "Ciencias Sociales",
@@ -234,19 +143,6 @@
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/Screenshot_20200323_124211.png"
   },
   {
-    "id": "incredibox",
-    "title": "Incredibox",
-    "area": "Musica",
-    "language": "Castellano",
-    "url": "https://www.incredibox.com/demo/",
-    "notes": "Importado desde listado de WordPress",
-    "levels": [
-      "Primaria 3er ciclo"
-    ],
-    "image": "assets/game-images/incredibox.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/miniSeleccio_0472-2.png"
-  },
-  {
     "id": "jclic",
     "title": "JClic",
     "area": "Musica",
@@ -258,19 +154,6 @@
     ],
     "image": "assets/game-images/jclic.gif",
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/curso2-2.gif"
-  },
-  {
-    "id": "mapes-espanya",
-    "title": "Mapas interactivos de Espana",
-    "area": "Ciencias Sociales",
-    "language": "Castellano",
-    "url": "https://mapasinteractivos.didactalia.net/comunidad/mapasflashinteractivos",
-    "notes": "Ubicacion de comunidades y provincias.",
-    "levels": [
-      "Primaria 2o ciclo"
-    ],
-    "image": "assets/game-images/mapes-espanya.png",
-    "imageSource": "https://mapasinteractivos.didactalia.net/comunidad/mapasflashinteractivos"
   },
   {
     "id": "mastermind-logica",
@@ -314,32 +197,6 @@
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/ortografia.png"
   },
   {
-    "id": "othello",
-    "title": "othello",
-    "area": "Matematicas",
-    "language": "Castellano",
-    "url": "https://www.topster.es/reversi/",
-    "notes": "En el campo, los jugadores alternativamente colocar fichas. Un jugador debe colocar su piedra en un campo vacío, que limita con un campo enemigo ocupado. Piezas, que son el propio color entre lo nuevo y una piedra ya establecida, la vuelta de la oposición. El juego es excedente cuando el tablero está lleno o ningún [&hellip;]",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/othello.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/othello2.png"
-  },
-  {
-    "id": "pacman",
-    "title": "Pacman",
-    "area": "General",
-    "language": "Castellano",
-    "url": "https://freepacman.org/",
-    "notes": "",
-    "levels": [
-      "Primaria 2o ciclo"
-    ],
-    "image": "assets/game-images/pacman.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2025/07/Captura-de-pantalla_2025-07-19_22-22-51-400x250.png"
-  },
-  {
     "id": "pajarologia-2",
     "title": "Pajarología",
     "area": "Musica",
@@ -378,19 +235,6 @@
     ],
     "image": "assets/game-images/puzzle-marino.png",
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/puzzle-marino.png"
-  },
-  {
-    "id": "puzzles-2",
-    "title": "Puzzles",
-    "area": "Logica",
-    "language": "Català/Valencià",
-    "url": "http://www.jigzone.com/puzzles/D8055D4B0A77&#038;z=5?v=22858",
-    "notes": "Puzzles temas variados multipiezas.",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/puzzles-2.jpg",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/Puzzles-variados.jpg"
   },
   {
     "id": "repaso-tablas-dianas-moviles",
@@ -432,34 +276,6 @@
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/231116114459scratch_mit_lab-2.jpg"
   },
   {
-    "id": "sudoku",
-    "title": "Sudoku",
-    "area": "Matematicas",
-    "language": "Castellano",
-    "url": "https://www.sudoku-online.org/sudokus-ninos.php",
-    "notes": "Sudoku configurable con cinco niveles de dificultad (Muy fácil, facíl&#8230;)",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/sudoku.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/sudoku-ninos.png"
-  },
-  {
-    "id": "sumes-restes-1",
-    "title": "Sumas y restas hasta 20",
-    "area": "Matematicas",
-    "language": "Català/Valencià",
-    "url": "https://www.arbolabc.com/juegos-de-matematicas",
-    "notes": "Repositorio de juegos de matematicas para reforzar calculo y logica.",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "title_ca": "Sumes i restes fins a 20",
-    "notes_ca": "Repositori de jocs de matemàtiques per a reforçar el càlcul i la lògica.",
-    "image": "assets/game-images/sumes-restes-1.png",
-    "imageSource": "https://www.arbolabc.com/juegos-de-matematicas"
-  },
-  {
     "id": "tablas-de-multiplicar",
     "title": "Tablas de multiplicar",
     "area": "Matematicas",
@@ -473,45 +289,6 @@
     "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/tablas.png"
   },
   {
-    "id": "tangram",
-    "title": "Tangram",
-    "area": "Logica",
-    "language": "Català/Valencià",
-    "url": "https://toytheater.com/tangram/",
-    "notes": "Tangram",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/tangram.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/tangram.png"
-  },
-  {
-    "id": "toni-b",
-    "title": "Toni-b",
-    "area": "Musica",
-    "language": "Castellano",
-    "url": "https://www.tony-b.org/",
-    "notes": "Importado desde listado de WordPress",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "image": "assets/game-images/toni-b.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/01/Screenshot_20200128_182127.png"
-  },
-  {
-    "id": "trencaclosques",
-    "title": "Trencaclosques",
-    "area": "Logica",
-    "language": "Castellano",
-    "url": "https://www.jigsawplanet.com/",
-    "notes": "Rompecabezas",
-    "levels": [
-      "Infantil"
-    ],
-    "image": "assets/game-images/trencaclosques.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/Screenshot_20200322_163843.png"
-  },
-  {
     "id": "angles-vocabulary",
     "title": "Vocabulary Practice",
     "area": "Ingles",
@@ -523,20 +300,6 @@
     ],
     "image": "assets/game-images/angles-vocabulary.png",
     "imageSource": "https://learnenglishkids.britishcouncil.org/games"
-  },
-  {
-    "id": "where-is-cat",
-    "title": "Where is cat?",
-    "area": "Logica",
-    "levels": [
-      "Infantil",
-      "Primaria 1er ciclo"
-    ],
-    "language": "Ingles",
-    "url": "https://www.mathplayground.com/logic_where_is_cat.html",
-    "notes": "Encontrar al gato. Juego de lógica.",
-    "image": "assets/game-images/where-is-cat.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/Where-is-cat-.png"
   },
   {
     "id": "chrome-music-lab",
@@ -553,49 +316,6 @@
     "notes": "Col·lecció d'experiments musicals interactius en línia, creats per Google.",
     "image": "assets/game-images/chrome-music-lab.png",
     "imageSource": "https://musiclab.chromeexperiments.com/Experiments"
-  },
-  {
-    "id": "simon-s-l-m",
-    "title": "Simón s-l-m",
-    "area": "Musica",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "language": "Català/Valencià",
-    "url": "https://aprendomusica.com/const2/03atrapanotas/game.html",
-    "notes": "Juego tipo Simón identificando notas sol-la-mi.",
-    "image": "assets/game-images/simon-s-l-m.jpg",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/03/simon.jpg",
-    "title_ca": "Simó s-l-m",
-    "notes_ca": "Joc tipus Simó per identificar les notes sol-la-mi."
-  },
-  {
-    "id": "youdj",
-    "title": "you.dj",
-    "area": "Musica",
-    "levels": [
-      "Primaria 1er ciclo"
-    ],
-    "language": "Català/Valencià",
-    "url": "https://youdj.online/",
-    "notes": "Per aprendre a ser un dj.",
-    "image": "assets/game-images/youdj.png",
-    "imageSource": "https://youdj.online/"
-  },
-  {
-    "id": "memory",
-    "title": "Memory",
-    "area": "Logica",
-    "levels": [
-      "Primaria 1er ciclo",
-      "Primaria 2o ciclo",
-      "Primaria 3er ciclo"
-    ],
-    "language": "Ingles",
-    "url": "https://toytheater.com/visual-memory/",
-    "notes": "Joc de memòria visual.",
-    "image": "assets/game-images/memory.png",
-    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/05/memory.png"
   },
   {
     "id": "cuatro-en-raya",
@@ -640,5 +360,292 @@
     "notes": "",
     "image": "assets/game-images/la-cueva-de-los-murcielagos.png",
     "imageSource": "https://www.vedoque.com/juegos/juego.php?j=cueva-murcielagos&l=es"
+  },
+  {
+    "id": "sumas-restas-multiplicaciones-la-granja",
+    "title": "Sumas, restas, multiplicaciones - La granja",
+    "area": "Matematicas",
+    "levels": [
+      "Primaria 2o ciclo"
+    ],
+    "language": "Castellano",
+    "url": "https://www.vedoque.com/juegos/granja-matematicas.html",
+    "notes": "Granja matemática con actividades en tres niveles de dificultad.",
+    "image": "assets/game-images/sumas-restas-multiplicaciones-la-granja.png",
+    "imageSource": "https://www.vedoque.com/juegos/granja-matematicas.html"
+  },
+  {
+    "id": "edubeatrix",
+    "title": "EduBeatrix",
+    "area": "Musica",
+    "levels": [
+      "Primaria 2o ciclo",
+      "Primaria 3er ciclo"
+    ],
+    "language": "Castellano",
+    "url": "https://sasogu.github.io/EduBeatrix/",
+    "notes": "Puzzle de ritmes.",
+    "image": "assets/game-images/edubeatrix.png",
+    "imageSource": "https://sasogu.github.io/EduBeatrix/"
+  },
+  {
+    "id": "edumelody",
+    "title": "EduMelody",
+    "area": "Musica",
+    "levels": [
+      "Primaria 2o ciclo",
+      "Primaria 3er ciclo"
+    ],
+    "language": "Castellano",
+    "url": "https://sasogu.github.io/EduMelody/",
+    "notes": "Fer melodies fàcil.",
+    "image": "assets/game-images/edumelody.png",
+    "imageSource": "https://sasogu.github.io/EduMelody/"
+  },
+  {
+    "id": "edusnake",
+    "title": "EduSnake",
+    "area": "Musica",
+    "levels": [
+      "Primaria 2o ciclo",
+      "Primaria 3er ciclo"
+    ],
+    "language": "Castellano",
+    "url": "https://sasogu.github.io/EduSnake/",
+    "notes": "Versió d'EduHoot en versió un únic jugador.",
+    "image": "assets/game-images/edusnake.png",
+    "imageSource": "https://sasogu.github.io/EduSnake/"
+  },
+  {
+    "id": "gato-atrapalo",
+    "title": "Gato atrápalo",
+    "area": "Logica",
+    "levels": [
+      "Primaria 3er ciclo"
+    ],
+    "language": "Català/Valencià",
+    "url": "http://www.educaplus.org/game/encierra-al-gato",
+    "notes": "Procura que el gato no se escape cerrándole el paso con círculos grises.",
+    "image": "assets/game-images/gato-atrapalo.png",
+    "imageSource": "https://edutictac.es/blog/bibliojocs/wp-content/uploads/sites/2/2020/04/Gato-atrapalo.png",
+    "title_ca": "Gat, atrapa'l!",
+    "notes_ca": "Intenta que el gat no escape tancant-li el pas amb cercles grisos."
+  },
+  {
+    "id": "100-palabras",
+    "title": "100 palabras",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/100paraules/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Infantil.",
+    "levels": [
+      "Infantil"
+    ],
+    "image": "assets/game-images/100-palabras.png",
+    "imageSource": "https://clic.xtec.cat/projects/100paraules/jclic.js/index.html"
+  },
+  {
+    "id": "abc-hungry",
+    "title": "ABC hungry",
+    "area": "Ingles",
+    "language": "Ingles",
+    "url": "https://interactive.sesamestreet.org/games/prod/178-bubble-uppercase/d5fc33a869571e314910ad9b5390a670c3b3fb61/run/index.html",
+    "notes": "Actividad interactiva para practicar ingles en Infantil, Primaria 1er ciclo.",
+    "levels": [
+      "Infantil",
+      "Primaria 1er ciclo"
+    ],
+    "image": "assets/game-images/abc-hungry.png",
+    "imageSource": "https://interactive.sesamestreet.org/games/prod/178-bubble-uppercase/d5fc33a869571e314910ad9b5390a670c3b3fb61/run/index.html"
+  },
+  {
+    "id": "abc-juego-interactivo",
+    "title": "ABC juego interactivo",
+    "area": "Lengua",
+    "language": "Castellano",
+    "url": "https://clic.xtec.cat/projects/abcsons/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Infantil, Primaria 1er ciclo.",
+    "levels": [
+      "Infantil",
+      "Primaria 1er ciclo"
+    ],
+    "image": "assets/game-images/abc-juego-interactivo.png",
+    "imageSource": "https://clic.xtec.cat/projects/abcsons/jclic.js/index.html"
+  },
+  {
+    "id": "actividades-de-lectura",
+    "title": "Actividades de lectura",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/lectinfa/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Infantil, Primaria 1er ciclo.",
+    "levels": [
+      "Infantil",
+      "Primaria 1er ciclo"
+    ],
+    "image": "assets/game-images/actividades-de-lectura.png",
+    "imageSource": "https://clic.xtec.cat/projects/lectinfa/jclic.js/index.html"
+  },
+  {
+    "id": "actividades-de-lengua",
+    "title": "Actividades de lengua",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/llengso/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Primaria 1er ciclo.",
+    "levels": [
+      "Primaria 1er ciclo"
+    ],
+    "image": "assets/game-images/actividades-de-lengua.png",
+    "imageSource": "https://clic.xtec.cat/projects/llengso/jclic.js/index.html"
+  },
+  {
+    "id": "adivina-cuadrilateros",
+    "title": "Adivina cuadriláteros",
+    "area": "Matematicas",
+    "language": "Castellano",
+    "url": "https://www.educ.ar/app/files/repositorio/html/20/86/dcd63385-2078-4b08-823a-f780f0ab6724/Adivina_adivinador_de_cuadrilateros/index.html",
+    "notes": "Actividad interactiva para practicar matematicas en Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/adivina-cuadrilateros.png",
+    "imageSource": "https://www.educ.ar/app/files/repositorio/html/20/86/dcd63385-2078-4b08-823a-f780f0ab6724/Adivina_adivinador_de_cuadrilateros/index.html"
+  },
+  {
+    "id": "adivina-triangulos",
+    "title": "Adivina triángulos",
+    "area": "Matematicas",
+    "language": "Castellano",
+    "url": "https://www.educ.ar/app/files/repositorio/html/10/21/26ee9b2d-e6be-426c-b0e6-b6c42f9ad2aa/Adivina_adivinador_de_triangulos/index.html",
+    "notes": "Actividad interactiva para practicar matematicas en Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/adivina-triangulos.png",
+    "imageSource": "https://www.educ.ar/app/files/repositorio/html/10/21/26ee9b2d-e6be-426c-b0e6-b6c42f9ad2aa/Adivina_adivinador_de_triangulos/index.html"
+  },
+  {
+    "id": "adivina-adivinanza-2",
+    "title": "Adivina, adivinanza",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/endevina/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Primaria 1er ciclo, Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 1er ciclo",
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/adivina-adivinanza-2.png",
+    "imageSource": "https://clic.xtec.cat/projects/endevina/jclic.js/index.html"
+  },
+  {
+    "id": "agente-anti-faltas",
+    "title": "Agente anti faltas",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://www.edu365.cat/interactius/agent/index.html",
+    "notes": "Actividad interactiva para practicar lengua en Primaria 3er ciclo.",
+    "levels": [
+      "Primaria 3er ciclo"
+    ],
+    "image": "assets/game-images/agente-anti-faltas.png",
+    "imageSource": "https://www.edu365.cat/interactius/agent/index.html"
+  },
+  {
+    "id": "amigos-de-los-animales",
+    "title": "Amigos de los animales",
+    "area": "Ciencias Naturales",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/vertebra/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar ciencias naturales en Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/amigos-de-los-animales.png",
+    "imageSource": "https://clic.xtec.cat/projects/vertebra/jclic.js/index.html"
+  },
+  {
+    "id": "animales-vertebrados-2",
+    "title": "Animales vertebrados",
+    "area": "Ciencias Naturales",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/avertebr/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar ciencias naturales en Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/animales-vertebrados-2.png",
+    "imageSource": "https://clic.xtec.cat/projects/avertebr/jclic.js/index.html"
+  },
+  {
+    "id": "animals-everywhere",
+    "title": "Animals everywhere",
+    "area": "Ingles",
+    "language": "Ingles",
+    "url": "https://clic.xtec.cat/projects/anim_en/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar ingles en Primaria 1er ciclo, Primaria 2o ciclo.",
+    "levels": [
+      "Primaria 1er ciclo",
+      "Primaria 2o ciclo"
+    ],
+    "image": "assets/game-images/animals-everywhere.png",
+    "imageSource": "https://clic.xtec.cat/projects/anim_en/jclic.js/index.html"
+  },
+  {
+    "id": "aparatos-del-cuerpo",
+    "title": "Aparatos del cuerpo",
+    "area": "Ciencias Naturales",
+    "language": "Català/Valencià",
+    "url": "https://clic.xtec.cat/projects/aparells/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar ciencias naturales en Primaria 3er ciclo.",
+    "levels": [
+      "Primaria 3er ciclo"
+    ],
+    "image": "assets/game-images/aparatos-del-cuerpo.png",
+    "imageSource": "https://clic.xtec.cat/projects/aparells/jclic.js/index.html"
+  },
+  {
+    "id": "aprende-los-animales",
+    "title": "Aprende los animales",
+    "area": "Ciencias Naturales",
+    "language": "Castellano",
+    "url": "https://clic.xtec.cat/projects/animale2/jclic.js/index.html",
+    "notes": "Actividad interactiva para practicar ciencias naturales en Infantil, Primaria 1er ciclo.",
+    "levels": [
+      "Infantil",
+      "Primaria 1er ciclo"
+    ],
+    "image": "assets/game-images/aprende-los-animales.png",
+    "imageSource": "https://clic.xtec.cat/projects/animale2/jclic.js/index.html"
+  },
+  {
+    "id": "atrapa-el-residuo",
+    "title": "Atrapa el residuo",
+    "area": "Ciencias Sociales",
+    "language": "Català/Valencià",
+    "url": "https://www.edu365.cat/interactius/reciclatge/index.html",
+    "notes": "Actividad interactiva para practicar ciencias sociales en Primaria 1er ciclo, Primaria 2o ciclo, Primaria 3er ciclo.",
+    "levels": [
+      "Primaria 1er ciclo",
+      "Primaria 2o ciclo",
+      "Primaria 3er ciclo"
+    ],
+    "image": "assets/game-images/atrapa-el-residuo.png",
+    "imageSource": "https://www.edu365.cat/interactius/reciclatge/index.html"
+  },
+  {
+    "id": "aventurate",
+    "title": "Aventúrate",
+    "area": "Lengua",
+    "language": "Català/Valencià",
+    "url": "https://www.edu365.cat/flash/aventurat/",
+    "notes": "Actividad interactiva para practicar lengua en Primaria 2o ciclo, Primaria 3er ciclo.",
+    "levels": [
+      "Primaria 2o ciclo",
+      "Primaria 3er ciclo"
+    ],
+    "image": "assets/game-images/aventurate.png",
+    "imageSource": "https://www.edu365.cat/flash/aventurat/"
   }
 ]

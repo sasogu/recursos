@@ -3,3 +3,4 @@ scripts/deploy.sh
 /node_modules
 assets/flash/
 data/archive-flash-state.json
+backups/
