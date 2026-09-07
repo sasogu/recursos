@@ -245,3 +245,7 @@ npm run deploy:dry
 El workflow `.github/workflows/deploy.yml` fa el deploy automàticament en fer push a `main`. Configura aquests Secrets a GitHub (Settings → Secrets → Actions):
 
 - `DEPLOY_HOST`, `DEPLOY_USER`, `DEPLOY_PATH`, `DEPLOY_SSH_KEY`, `DEPLOY_PORT`
+
+## Llicència
+
+Codi: GNU Affero General Public License v3.0 (AGPL-3.0). El catàleg d'activitats i els seus continguts pertanyen als autors respectius (p. ex. clic.xtec.cat).
