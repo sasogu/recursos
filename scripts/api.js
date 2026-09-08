@@ -158,6 +158,15 @@ export async function reportBroken(gameKeyValue) {
   });
 }
 
+export async function hideResource(gameKeyValue) {
+  if (state.backendMode !== "remote" || !isAdmin()) return;
+  const res = await api("/admin/resources/hide", { method: "POST", body: { game_key: gameKeyValue } });
+  state.brokenSummary.set(gameKeyValue, {
+    count: Number(res.count) || 0,
+    adminReported: Boolean(res.admin_reported),
+  });
+}
+
 export async function submitActivity({ title, url, notes, area, language, name }) {
   if (state.backendMode !== "remote") return;
   return api("/submissions", {

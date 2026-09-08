@@ -203,6 +203,8 @@ El mode admin permet veure:
 
 - **Filtre "No funciona (admin)"**: activitats amagades (≥ 3 reports d'usuaris o marcades per l'admin).
 - **Filtre "Reportades (admin)"**: activitats amb 1-2 reports, visibles però vigilades.
+- **Ocultar activitat**: marca una activitat com a no funcional perquè deixe
+  d'aparéixer al llistat públic sense modificar els JSON d'origen.
 
 ---
 

@@ -10,7 +10,7 @@ import { clearSelect, fillSelect, updateSelectLabels, buildCard } from "./render
 import {
   initPreferenceBackend, loadSubmissions,
   toggleFavoritePreference, setRatingPreference, reportBroken,
-  isAdmin, submitActivity, loadSources, authMe,
+  hideResource, isAdmin, submitActivity, loadSources, authMe,
 } from "./api.js";
 
 const dataUrl = "./data/games.json";
@@ -59,6 +59,7 @@ const cardDeps = {
   onFavoriteToggle: toggleFavoritePreference,
   onRatingSet: setRatingPreference,
   onReport: reportBroken,
+  onHide: hideResource,
   onRender: () => render(),
   favoritesOnlyEl: favoritesOnly,
 };

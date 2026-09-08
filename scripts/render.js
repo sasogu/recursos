@@ -161,6 +161,31 @@ export function createReportButton(gameKeyValue, article, { onReport, onRender }
   return button;
 }
 
+export function createAdminHideButton(gameKeyValue, { onHide, onRender }) {
+  if (state.backendMode !== "remote" || !isAdmin()) return null;
+
+  const button = document.createElement("button");
+  button.type = "button";
+  button.className = "admin-hide-btn";
+  button.textContent = "×";
+  button.title = i18n("admin_hide_resource");
+  button.setAttribute("aria-label", button.title);
+
+  button.addEventListener("click", async () => {
+    if (!window.confirm(i18n("admin_hide_confirm"))) return;
+    button.disabled = true;
+    try {
+      await onHide(gameKeyValue);
+      onRender();
+    } catch (error) {
+      console.error("No se pudo ocultar actividad", error);
+      button.disabled = false;
+    }
+  });
+
+  return button;
+}
+
 export function createRatingControl(gameKeyValue, selectedRating, ratingSummary, { onRatingSet, onRender }) {
   const wrapper = document.createElement("div");
   wrapper.className = "rating";
@@ -212,7 +237,7 @@ export function createRatingControl(gameKeyValue, selectedRating, ratingSummary,
 }
 
 export function buildCard(game, cardDeps) {
-  const { onFavoriteToggle, onRatingSet, onReport, onRender, favoritesOnlyEl } = cardDeps;
+  const { onFavoriteToggle, onRatingSet, onReport, onHide, onRender, favoritesOnlyEl } = cardDeps;
   const health = linkHealth(game.url);
   const key = gameKey(game);
   const isFavorite = state.favorites.has(key);
@@ -233,9 +258,14 @@ export function buildCard(game, cardDeps) {
   const cardHead = document.createElement("div");
   cardHead.className = "card-head";
   const reportBtn = createReportButton(key, article, { onReport, onRender });
+  const hideBtn = createAdminHideButton(key, { onHide, onRender });
   const headButtons = [createFavoriteButton(key, isFavorite, { onToggle: onFavoriteToggle, onRender, favoritesOnlyEl })];
   if (reportBtn) headButtons.push(reportBtn);
-  cardHead.append(title, ...headButtons);
+  if (hideBtn) headButtons.push(hideBtn);
+  const actions = document.createElement("div");
+  actions.className = "card-actions";
+  actions.append(...headButtons);
+  cardHead.append(title, actions);
 
   const meta = document.createElement("div");
   meta.className = "meta";

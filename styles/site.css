@@ -355,7 +355,15 @@ select:focus {
   gap: 0.5rem;
 }
 
-.fav-btn {
+.card-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  flex-shrink: 0;
+}
+
+.fav-btn,
+.admin-hide-btn {
   border: 1px solid #e6c993;
   background: #fff6e2;
   color: #8a4d20;
@@ -383,6 +391,24 @@ select:focus {
 
 .fav-btn:focus-visible {
   outline: 2px solid color-mix(in srgb, var(--accent) 65%, white);
+  outline-offset: 2px;
+}
+
+.admin-hide-btn {
+  border-color: #e7aaa0;
+  background: #fff1ef;
+  color: #a93324;
+  font-size: 1.15rem;
+  font-weight: 700;
+}
+
+.admin-hide-btn:hover {
+  background: #ffe3df;
+  transform: translateY(-1px);
+}
+
+.admin-hide-btn:focus-visible {
+  outline: 2px solid color-mix(in srgb, var(--danger) 65%, white);
   outline-offset: 2px;
 }
 
