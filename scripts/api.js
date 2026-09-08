@@ -189,3 +189,12 @@ export async function loadSources() {
   const data = await api("/admin/sources");
   return Array.isArray(data?.providers) ? data.providers : [];
 }
+
+export async function authMe() {
+  if (state.backendMode !== "remote") return { logged_in: false, admin: false, sub: "" };
+  try {
+    return await api("/auth/me");
+  } catch {
+    return { logged_in: false, admin: false, sub: "" };
+  }
+}

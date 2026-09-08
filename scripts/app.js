@@ -10,7 +10,7 @@ import { clearSelect, fillSelect, updateSelectLabels, buildCard } from "./render
 import {
   initPreferenceBackend, loadSubmissions,
   toggleFavoritePreference, setRatingPreference, reportBroken,
-  isAdmin, submitActivity, loadSources,
+  isAdmin, submitActivity, loadSources, authMe,
 } from "./api.js";
 
 const dataUrl = "./data/games.json";
@@ -39,7 +39,7 @@ const statusStrip = document.querySelector("#statusStrip");
 const offlineBanner = document.querySelector("#offlineBanner");
 const personalPrefsNote = document.querySelector("#personalPrefsNote");
 const authPanel = document.querySelector("#authPanel");
-const authStatus = document.querySelector("#authStatus");
+const loginBtn = document.querySelector("#loginBtn");
 const sourcesPanel = document.querySelector("#sourcesPanel");
 const sourcesList = document.querySelector("#sourcesList");
 const submitActivityBtn = document.querySelector("#submitActivityBtn");
@@ -87,6 +87,7 @@ async function boot() {
 
   await initPreferenceBackend();
   updateAuthUi();
+  updateLoginBtn();
   hydrateFilterOptions();
   applyStaticTranslations();
   updatePreferencesNote();
@@ -216,17 +217,15 @@ function setReportBanner(report) {
 }
 
 function updateAuthUi() {
-  if (!authPanel || !authStatus) return;
+  if (!authPanel) return;
 
   if (state.backendMode !== "remote") {
     authPanel.classList.add("hidden");
-    authStatus.textContent = i18n("auth_status_local");
     if (submitActivityBtn) submitActivityBtn.classList.add("hidden");
     return;
   }
 
   authPanel.classList.remove("hidden");
-  authStatus.textContent = isAdmin() ? i18n("auth_status_admin") : i18n("auth_status_anon");
   if (submitActivityBtn) submitActivityBtn.classList.remove("hidden");
   if (brokenOnlyLabel) brokenOnlyLabel.classList.toggle("hidden", !isAdmin());
   if (reportedOnlyLabel) reportedOnlyLabel.classList.toggle("hidden", !isAdmin());
@@ -258,6 +257,18 @@ async function renderSources() {
     info.textContent = `Recursos: ${p.resources} · Estado: ${status} · Última sync: ${finished} · fetched ${fetched}, nuevos ${created}, actualizados ${updated}, errores ${errors}`;
     row.append(title, info);
     sourcesList.append(row);
+  }
+}
+
+async function updateLoginBtn() {
+  if (!loginBtn) return;
+  const me = await authMe();
+  if (me.logged_in) {
+    loginBtn.href = "/api/auth/logout";
+    loginBtn.textContent = i18n("logout_btn");
+  } else {
+    loginBtn.href = "/api/auth/login";
+    loginBtn.textContent = i18n("login_btn");
   }
 }
 
@@ -318,6 +329,7 @@ function wireEvents() {
       updateDynamicFilterLabels();
       updatePreferencesNote();
       updateAuthUi();
+      updateLoginBtn();
       if (state.lastReport) {
         setReportBanner(state.lastReport);
       } else {
