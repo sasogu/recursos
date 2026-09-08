@@ -74,6 +74,9 @@ El metadato original del proveedor **nunca se pierde**: queda en `metadata_json`
   `preview_url`, `downloads`, `size`, `updated_at`.
 - `/v1/contents/{id}` → 403 (requiere registro); `/v1/contents/{id}/export` → 302 (`.h5p`).
 - `download_url` = `/contents/{id}/export`; `license`/`license_known` rellenos desde el item.
+- **Filtro de calidad** (`_is_eligible`): solo se indexa es/ca (`ELIGIBLE_LANGS`) y
+  edad escolar (`_age_is_school`: min ≤ 16, máx ≤ 18). El hub es mayoritariamente
+  contenido universitario/adulto en ru/de/en; sin filtro diluye el banco.
 
 ### SCORM
 - No hay repositorio central. Se ingiere por URL (`sync scorm --url=...`) o desde
@@ -96,6 +99,10 @@ El metadato original del proveedor **nunca se pierde**: queda en `metadata_json`
   - **`coverImage` es determinista** desde EduHoot 2026-09-08 (primera pregunta
     con media, ya no aleatoria); aun así `thumbnail_url` no participa en la
     comparación updated/unchanged por si el esquema cambiara.
+- **Filtro de ocio/cultura pop** (`_is_educational`): descarta quizzes cuyos tags
+  o nombre caen en la blocklist (`EDUHOOT_NON_EDUCATIONAL_TAGS`,
+  `EDUHOOT_NON_EDUCATIONAL_NAME_FRAGMENTS` en `app/taxonomy.py`), p. ej.
+  Minecraft, Fortnite, Marvel, Aitana, Stranger Things, Black Mirror.
 
 ## Sincronización (CLI)
 

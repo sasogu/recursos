@@ -215,18 +215,18 @@ const areaLabels = {
 
 const languageLabels = {
   es: {
-    Aranes: "Aranés",
-    Castellano: "Castellano",
-    "Català/Valencià": "Catalán/Valenciano",
-    Frances: "Francés",
-    Ingles: "Inglés",
+    ca: "Catalán/Valenciano",
+    es: "Castellano",
+    en: "Inglés",
+    fr: "Francés",
+    oc: "Aranés",
   },
   ca: {
-    Aranes: "Aranés",
-    Castellano: "Castellà",
-    "Català/Valencià": "Català/Valencià",
-    Frances: "Francés",
-    Ingles: "Anglés",
+    ca: "Català/Valencià",
+    es: "Castellà",
+    en: "Anglés",
+    fr: "Francés",
+    oc: "Aranés",
   },
 };
 
