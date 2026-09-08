@@ -10,13 +10,22 @@ const timeoutMs = 12000;
 const concurrency = 6;
 const strictWarnings = process.env.STRICT_WARNINGS === "true";
 
+const sourceArg = process.argv.includes("--source")
+  ? process.argv[process.argv.indexOf("--source") + 1]
+  : null;
+
 const games = await readGames(dataPath);
-const allUrls = [...new Set(games.map((game) => game.url).filter(Boolean))];
+const scopedGames = sourceArg ? games.filter((g) => g.source === sourceArg) : games;
+const allUrls = [...new Set(scopedGames.map((game) => game.url).filter(Boolean))];
 
 const remoteUrls = allUrls.filter((u) => u.startsWith("http://") || u.startsWith("https://"));
 const skippedUrls = allUrls.filter((u) => !u.startsWith("http://") && !u.startsWith("https://"));
 
-console.log(`Comprobando ${remoteUrls.length} enlaces (${skippedUrls.length} rutas locales omitidas)...`);
+console.log(
+  `Comprobando ${remoteUrls.length} enlaces (${skippedUrls.length} rutas locales omitidas)` +
+  (sourceArg ? ` [source=${sourceArg}]` : "") +
+  `...`
+);
 const checks = await runWithConcurrency(remoteUrls, concurrency, checkUrl);
 
 const skipped = skippedUrls.map((url) => ({
