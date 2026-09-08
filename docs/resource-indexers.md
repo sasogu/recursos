@@ -84,13 +84,16 @@ El metadato original del proveedor **nunca se pierde**: queda en `metadata_json`
 - Fuente: `https://eduhoot.edutictac.es/api/public-quizzes` (94 quizzes públicos).
 - `play_url` (modo individual) = `https://eduhoot.edutictac.es/solo/?id={id}`.
 - `external_id` = `id` numérico del quiz.
+- Metadatos opcionales por quiz (añadidos en EduHoot 2026-09-08): `language`,
+  `license`, `description`. El provider los lee si existen (`license_known` se
+  activa cuando hay `license`; `language` se normaliza vía `eduhoot_language`).
 - Limitaciones:
-  - **Sin idioma ni licencia** por quiz: `language=[]`, `license_known=false`.
+  - Cuando el quiz no declara `language`/`license`/`description`, quedan vacíos.
   - **Tags libres y multilingües**; se conservan y se mapean heurísticamente
     (`app/taxonomy.py`: materia, etapa, nivel).
-  - **`coverImage` es aleatoria** cuando el quiz tiene varias preguntas con media
-    (el endpoint elige una al azar). Por eso `thumbnail_url` NO participa en la
-    comparación updated/unchanged (ver `app/sync.py`).
+  - **`coverImage` es determinista** desde EduHoot 2026-09-08 (primera pregunta
+    con media, ya no aleatoria); aun así `thumbnail_url` no participa en la
+    comparación updated/unchanged por si el esquema cambiara.
 
 ## Sincronización (CLI)
 
