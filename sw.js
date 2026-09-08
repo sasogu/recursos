@@ -1,4 +1,4 @@
-const CACHE_NAME = "recursos-v1.4.0";
+const CACHE_NAME = "recursos-v1.5.0";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -62,6 +62,11 @@ self.addEventListener("fetch", (event) => {
 
   const url = new URL(request.url);
   if (url.origin !== self.location.origin) {
+    return;
+  }
+
+  if (url.pathname.startsWith("/api/")) {
+    event.respondWith(networkFirst(request));
     return;
   }
 
