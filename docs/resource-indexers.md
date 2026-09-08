@@ -116,8 +116,11 @@ python -m app.cli export-catalog --games data/games.json --out-dir data/
   marca el `SyncRun` como `error`.
 - `SyncRun` (tabla `sync_runs`): `provider`, `started_at`, `finished_at`,
   `fetched`, `created`, `updated`, `unchanged`, `errors`, `status`, `error_log`.
-- Automatización: se puede programar con cron/systemd-timer. Pendiente de definir
-  el timer real en producción.
+- Automatización (producción): timer systemd `recursos-sync.timer` (diario 04:15)
+  → `recursos-sync.service` → `scripts/sync-and-export.sh` (sync jclic/h5p/eduhoot
+  + `export-catalog` + copia de `games.json`/`games-home.json` a
+  `/var/www/recursos/data/`). El catálogo legacy original vive en
+  `/opt/recursos-api/data/games-legacy.json` (fuente del export, no el generado).
 
 ### Exportar al frontend (`export-catalog`)
 
@@ -129,6 +132,14 @@ Genera `games.json` + `games-home.json` (formato actual de la PWA) a partir del
   `jclic` con mejores metadatos), evitando duplicados.
 - Orden: `legacy` → `jclic` → `h5p` → `eduhoot` → `scorm`.
 - `games-home.json` = primeros 48 con imagen (como `generate-home.mjs`).
+
+## Verificación de enlaces
+
+`npm run check:links` verifica `data/games.json`. Con el catálogo unificado
+(~10.700 recursos) conviene acotar por fuente: `node scripts/check-links.mjs --source legacy`
+(o `jclic`, `h5p`, `eduhoot`). Los recursos indexados provienen de fuentes vivas
+(API), así que la verificación de enlaces es más relevante para el catálogo
+curado (`legacy`).
 
 ## API
 
