@@ -10,7 +10,7 @@ import { clearSelect, fillSelect, updateSelectLabels, buildCard } from "./render
 import {
   initPreferenceBackend, loadSubmissions,
   toggleFavoritePreference, setRatingPreference, reportBroken,
-  isAdmin, submitActivity,
+  isAdmin, submitActivity, loadSources,
 } from "./api.js";
 
 const dataUrl = "./data/games.json";
@@ -23,6 +23,7 @@ const searchInput = document.querySelector("#searchInput");
 const levelFilter = document.querySelector("#levelFilter");
 const languageFilter = document.querySelector("#languageFilter");
 const areaFilter = document.querySelector("#areaFilter");
+const formatFilter = document.querySelector("#formatFilter");
 const favoritesOnly = document.querySelector("#favoritesOnly");
 const submissionsOnly = document.querySelector("#submissionsOnly");
 const brokenOnly = document.querySelector("#brokenOnly");
@@ -39,6 +40,8 @@ const offlineBanner = document.querySelector("#offlineBanner");
 const personalPrefsNote = document.querySelector("#personalPrefsNote");
 const authPanel = document.querySelector("#authPanel");
 const authStatus = document.querySelector("#authStatus");
+const sourcesPanel = document.querySelector("#sourcesPanel");
+const sourcesList = document.querySelector("#sourcesList");
 const submitActivityBtn = document.querySelector("#submitActivityBtn");
 const submitDialog = document.querySelector("#submitDialog");
 const submitForm = document.querySelector("#submitForm");
@@ -137,16 +140,19 @@ function allGames() {
 
 function hydrateFilterOptions() {
   const games = allGames();
-  const saved = { level: levelFilter.value, language: languageFilter.value, area: areaFilter.value };
+  const saved = { level: levelFilter.value, language: languageFilter.value, area: areaFilter.value, format: formatFilter.value };
   clearSelect(levelFilter);
   clearSelect(languageFilter);
   clearSelect(areaFilter);
+  clearSelect(formatFilter);
   fillSelect(levelFilter, uniqueLevelValues(games), levelLabel);
   fillSelect(languageFilter, uniqueLanguageValues(games), languageLabel);
   fillSelect(areaFilter, uniqueValues(games, "area"), areaLabel);
+  fillSelect(formatFilter, uniqueValues(games, "format"));
   levelFilter.value = saved.level;
   languageFilter.value = saved.language;
   areaFilter.value = saved.area;
+  formatFilter.value = saved.format;
 }
 
 function updateDynamicFilterLabels() {
@@ -161,6 +167,7 @@ function render() {
     selectedLevel: levelFilter.value,
     selectedLanguage: languageFilter.value,
     selectedArea: areaFilter.value,
+    selectedFormat: formatFilter.value,
     onlyFavorites: favoritesOnly.checked,
     onlySubmissions: submissionsOnly?.checked,
     onlyBroken: brokenOnly?.checked,
@@ -223,6 +230,35 @@ function updateAuthUi() {
   if (submitActivityBtn) submitActivityBtn.classList.remove("hidden");
   if (brokenOnlyLabel) brokenOnlyLabel.classList.toggle("hidden", !isAdmin());
   if (reportedOnlyLabel) reportedOnlyLabel.classList.toggle("hidden", !isAdmin());
+
+  if (sourcesPanel) {
+    sourcesPanel.classList.toggle("hidden", !isAdmin());
+    if (isAdmin()) renderSources();
+  }
+}
+
+async function renderSources() {
+  if (!sourcesList || !isAdmin()) return;
+  const providers = await loadSources();
+  if (!providers) return;
+  sourcesList.innerHTML = "";
+  for (const p of providers) {
+    const last = p.last_sync || {};
+    const row = document.createElement("div");
+    row.className = "source-row";
+    const title = document.createElement("strong");
+    title.textContent = p.provider;
+    const info = document.createElement("span");
+    const status = last.status || "—";
+    const fetched = last.fetched ?? "—";
+    const created = last.created ?? "—";
+    const updated = last.updated ?? "—";
+    const errors = last.errors ?? "—";
+    const finished = last.finished_at ? new Date(last.finished_at).toLocaleString() : "nunca";
+    info.textContent = `Recursos: ${p.resources} · Estado: ${status} · Última sync: ${finished} · fetched ${fetched}, nuevos ${created}, actualizados ${updated}, errores ${errors}`;
+    row.append(title, info);
+    sourcesList.append(row);
+  }
 }
 
 function updateLangButtons() {
@@ -257,6 +293,7 @@ function wireEvents() {
   levelFilter.addEventListener("change", render);
   languageFilter.addEventListener("change", render);
   areaFilter.addEventListener("change", render);
+  formatFilter.addEventListener("change", render);
   favoritesOnly.addEventListener("change", render);
   if (submissionsOnly) submissionsOnly.addEventListener("change", render);
   if (brokenOnly) brokenOnly.addEventListener("change", render);

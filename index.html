@@ -135,6 +135,13 @@
       </label>
 
       <label>
+        <span data-i18n="format_label">Formato</span>
+        <select id="formatFilter">
+          <option value="" data-i18n="format_all">Todos</option>
+        </select>
+      </label>
+
+      <label>
         <span data-i18n="rating_min_label">Valoracion minima</span>
         <select id="ratingFilter">
           <option value="0" data-i18n="rating_all_filter">Todas</option>
@@ -179,6 +186,11 @@
         <button id="loadMoreBtn" class="btn-load-more hidden"></button>
       </div>
       <p id="emptyState" class="empty hidden" data-i18n="empty">No hay resultados con los filtros actuales.</p>
+    </section>
+
+    <section id="sourcesPanel" class="sources-panel hidden" aria-live="polite">
+      <h2>Fuentes de recursos</h2>
+      <div id="sourcesList" class="sources-list"></div>
     </section>
   </main>
 

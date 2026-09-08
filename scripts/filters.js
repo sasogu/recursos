@@ -93,7 +93,7 @@ export function getRatingForFilter(gameKeyValue) {
 
 export function computeFilteredGames(games, criteria) {
   const {
-    term, selectedLevel, selectedLanguage, selectedArea,
+    term, selectedLevel, selectedLanguage, selectedArea, selectedFormat,
     onlyFavorites, onlySubmissions, onlyBroken, onlyReported, minRating,
   } = criteria;
   const termWords = normalizeSearch(term).split(/\s+/).filter(Boolean);
@@ -117,6 +117,7 @@ export function computeFilteredGames(games, criteria) {
     if (selectedLevel && !gameLevels.includes(selectedLevel)) return false;
     if (selectedLanguage && !gameLanguages(game).includes(selectedLanguage)) return false;
     if (selectedArea && game.area !== selectedArea) return false;
+    if (selectedFormat && game.format !== selectedFormat) return false;
 
     if (termWords.length > 0) {
       const haystack = normalizeSearch([

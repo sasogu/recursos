@@ -240,11 +240,13 @@ export function buildCard(game, cardDeps) {
   const meta = document.createElement("div");
   meta.className = "meta";
   const gameLevels = game.levels || (game.level ? [game.level] : [i18n("no_level")]);
+  const FORMAT_TAGS = ["jclic", "h5p", "eduhoot", "scorm"];
   meta.append(
     ...(game._isSubmission ? [tag(i18n("submission_badge"), "submission")] : []),
     tag(areaLabel(game.area || "General")),
     ...gameLevels.map((l) => tag(levelLabel(l))),
     tag(gameLanguageText(game) || "Idioma no definido", "lang"),
+    ...(FORMAT_TAGS.includes(game.format) ? [tag(String(game.format).toUpperCase(), "format")] : []),
     ...(game.flash ? [tag("Flash", "flash")] : []),
   );
 

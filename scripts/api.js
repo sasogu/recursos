@@ -183,3 +183,9 @@ export async function submitActivity({ title, url, notes, area, language, name }
     body: { title, url, notes, area, language, name },
   });
 }
+
+export async function loadSources() {
+  if (!isAdmin()) return null;
+  const data = await api("/admin/sources");
+  return Array.isArray(data?.providers) ? data.providers : [];
+}

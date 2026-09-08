@@ -575,6 +575,16 @@ select:focus {
   color: #7a3b00;
 }
 
+.tag.format {
+  background: #eaf0fb;
+  border-color: #a9c3ef;
+  color: #1d3f7f;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 0.68rem;
+  letter-spacing: 0.04em;
+}
+
 .tag.submission {
   background: #eaf8f3;
   border-color: #97d9ce;
@@ -588,6 +598,44 @@ select:focus {
 .card.submission {
   border-color: #97d9ce;
   background: #f5fdfb;
+}
+
+.sources-panel {
+  margin: 2rem auto;
+  padding: 1rem 1.2rem;
+  border: 1px solid #d9e2ec;
+  border-radius: 12px;
+  background: #f7fafc;
+}
+
+.sources-panel h2 {
+  margin: 0 0 0.6rem;
+  font-size: 1rem;
+}
+
+.sources-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.source-row {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  padding: 0.5rem 0.6rem;
+  border: 1px solid #e6e9ed;
+  border-radius: 8px;
+  background: #fff;
+}
+
+.source-row strong {
+  font-size: 0.9rem;
+}
+
+.source-row span {
+  font-size: 0.8rem;
+  color: var(--ink-soft);
 }
 
 .submission-by {
