@@ -5,8 +5,10 @@ Documentación técnica del índice federado de REA de `recursos.edutictac.es`.
 ## Estado
 
 En desarrollo (2026-09-08). Backend operativo (esquema, providers, CLI, API).
-La integración visual en la PWA (FASE 8) está pendiente: el frontend sigue
-leyendo `data/games.json` y todavía no consume `/api/resources`.
+Integración con la PWA: el frontend sigue leyendo `data/games.json`, pero ya
+existe un exportador (`export-catalog`) que genera ese JSON unificado a partir
+del índice (legacy + jclic + h5p + eduhoot + scorm), de modo que los nuevos
+recursos aparecen sin reescribir el frontend.
 
 ---
 
@@ -102,6 +104,7 @@ python -m app.cli sync jclic|h5p|scorm|eduhoot|all
 python -m app.cli sync scorm --url https://.../paquete.zip
 python -m app.cli stats
 python -m app.cli sources
+python -m app.cli export-catalog --games data/games.json --out-dir data/
 ```
 
 - Upsert por `(provider, external_id)`; detecta `created`/`updated`/`unchanged`.
@@ -115,6 +118,17 @@ python -m app.cli sources
   `fetched`, `created`, `updated`, `unchanged`, `errors`, `status`, `error_log`.
 - Automatización: se puede programar con cron/systemd-timer. Pendiente de definir
   el timer real en producción.
+
+### Exportar al frontend (`export-catalog`)
+
+Genera `games.json` + `games-home.json` (formato actual de la PWA) a partir del
+índice, para mostrar los recursos federados sin reescribir el frontend:
+
+- Importa el catálogo curado (`data/games.json`) como provider `legacy`.
+- Excluye los `legacy` de `clic.xtec.cat/projects/` (cubiertos por el provider
+  `jclic` con mejores metadatos), evitando duplicados.
+- Orden: `legacy` → `jclic` → `h5p` → `eduhoot` → `scorm`.
+- `games-home.json` = primeros 48 con imagen (como `generate-home.mjs`).
 
 ## API
 
