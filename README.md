@@ -182,9 +182,9 @@ pròpia (FastAPI + SQLite) servida a `recursos.edutictac.es/api/` (migració
 - La URL de l'API es pot sobreescriure amb `window.EDUBIBLIOJOCS_API_BASE`
   (per defecte `/api`, mateix origen).
 - Identitat **anònima per cookie** (sense Google).
-- **Mode admin**: obre `https://recursos.edutictac.es/?admin=TOKEN` amb el
-  token d'administrador. Activa els filtres "No funciona (admin)" i
-  "Reportades (admin)".
+- **Mode admin**: entra amb Authentik des del botó **Entrar**. Els correus
+  configurats en `OIDC_ADMIN_EMAILS` activen els filtres "No funciona (admin)"
+  i "Reportades (admin)".
 
 ### Estructura de dades (SQLite)
 

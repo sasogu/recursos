@@ -61,21 +61,6 @@ async function api(path, { method = "GET", body } = {}) {
   return res.json();
 }
 
-async function tryAdminFromUrl() {
-  const params = new URLSearchParams(window.location.search || "");
-  const token = params.get("admin");
-  if (!token) return;
-  try {
-    await api("/admin/login", { method: "POST", body: { token } });
-    state.isAdmin = true;
-  } catch {
-    // token inválido: se ignora
-  }
-  params.delete("admin");
-  const qs = params.toString();
-  history.replaceState(null, "", window.location.pathname + (qs ? `?${qs}` : "") + window.location.hash);
-}
-
 export async function initPreferenceBackend() {
   loadLocalPreferences();
 
@@ -103,9 +88,6 @@ export async function initPreferenceBackend() {
     );
     state.backendMode = "remote";
     state.authReady = true;
-
-    await tryAdminFromUrl();
-    if (state.isAdmin && state._onAuthChange) state._onAuthChange();
   } catch (error) {
     console.warn("No se pudo conectar con la API, se mantiene modo local.", error);
     state.backendMode = "local";
