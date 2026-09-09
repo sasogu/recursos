@@ -1,5 +1,6 @@
 import { i18n, areaLabel, languageLabel, levelLabel, getLang } from "./i18n.js";
 import { openFlashDialog } from "./flash.js";
+import { openJClicDialog } from "./jclic.js";
 import { state, DEFAULT_GAME_IMAGE, REPORT_THRESHOLD } from "./state.js";
 import { normalizeUrl, gameKey, gameLanguages, gameLanguageText } from "./filters.js";
 import { isAdmin } from "./api.js";
@@ -79,6 +80,17 @@ export function createCardImageAction(game) {
     trigger.title = i18n("play_ruffle");
     trigger.setAttribute("aria-label", i18n("play_ruffle"));
     trigger.addEventListener("click", () => openFlashDialog(game.url, game.title));
+    trigger.appendChild(image);
+    return trigger;
+  }
+
+  if (game.format === "jclic") {
+    const trigger = document.createElement("button");
+    trigger.type = "button";
+    trigger.className = "card-image-link";
+    trigger.title = i18n("open_game");
+    trigger.setAttribute("aria-label", i18n("open_game"));
+    trigger.addEventListener("click", () => openJClicDialog(game.url, game.title));
     trigger.appendChild(image);
     return trigger;
   }
