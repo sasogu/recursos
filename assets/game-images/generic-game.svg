@@ -36,15 +36,6 @@
     <rect x="350" y="179" width="24" height="100" rx="4" fill="#0f766e"/>
     <rect x="380" y="179" width="36" height="100" rx="4" fill="#d66b1f"/>
     <rect x="422" y="179" width="34" height="100" rx="4" fill="#22577a"/>
-
-    <!-- Fila 3 -->
-    <rect x="198" y="290" width="36" height="99" rx="4" fill="#d66b1f"/>
-    <rect x="240" y="290" width="28" height="99" rx="4" fill="#22577a"/>
-    <rect x="274" y="290" width="34" height="99" rx="4" fill="#0f766e"/>
-    <rect x="314" y="290" width="26" height="99" rx="4" fill="#d66b1f"/>
-    <rect x="346" y="290" width="40" height="99" rx="4" fill="#22577a"/>
-    <rect x="392" y="290" width="30" height="99" rx="4" fill="#0f766e"/>
-    <rect x="428" y="290" width="28" height="99" rx="4" fill="#d66b1f"/>
   </g>
 
   <!-- Text -->
