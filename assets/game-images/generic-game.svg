@@ -1,51 +1,52 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Bibliojocs - Juegos educativos">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 400" role="img" aria-label="Banc de recursos - Jocs educatius">
   <defs>
     <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#1a4a68"/>
-      <stop offset="100%" stop-color="#2d6a8f"/>
+      <stop offset="0%" stop-color="#fff8e8"/>
+      <stop offset="100%" stop-color="#f1e7cf"/>
     </linearGradient>
-    <radialGradient id="sun" cx="45%" cy="40%" r="55%">
-      <stop offset="0%" stop-color="#ffe566"/>
-      <stop offset="100%" stop-color="#f5a800"/>
-    </radialGradient>
   </defs>
 
   <rect width="640" height="400" fill="url(#bg)"/>
 
-  <!-- Decorative circles background -->
-  <circle cx="80" cy="60" r="50" fill="#ffffff" opacity="0.04"/>
-  <circle cx="580" cy="350" r="70" fill="#ffffff" opacity="0.04"/>
-  <circle cx="560" cy="60" r="35" fill="#ffffff" opacity="0.04"/>
+  <!-- Prestatge (estantería) -->
+  <g>
+    <!-- Laterals -->
+    <rect x="168" y="58" width="16" height="232" rx="5" fill="#22577a"/>
+    <rect x="456" y="58" width="16" height="232" rx="5" fill="#22577a"/>
 
-  <!-- Sun rays -->
-  <g transform="translate(320,172)" fill="#f5c400">
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(0)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(45)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(90)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(135)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(180)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(225)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(270)"/>
-    <ellipse cx="0" cy="-102" rx="10" ry="20" transform="rotate(315)"/>
+    <!-- Baldas -->
+    <rect x="184" y="58" width="272" height="11" rx="4" fill="#22577a"/>
+    <rect x="184" y="168" width="272" height="11" rx="4" fill="#22577a"/>
+    <rect x="184" y="279" width="272" height="11" rx="4" fill="#22577a"/>
+
+    <!-- Fila 1 -->
+    <rect x="198" y="69" width="34" height="99" rx="4" fill="#0f766e"/>
+    <rect x="238" y="69" width="26" height="99" rx="4" fill="#d66b1f"/>
+    <rect x="270" y="69" width="40" height="99" rx="4" fill="#22577a"/>
+    <rect x="316" y="69" width="24" height="99" rx="4" fill="#0f766e"/>
+    <rect x="346" y="69" width="36" height="99" rx="4" fill="#d66b1f"/>
+    <rect x="388" y="69" width="28" height="99" rx="4" fill="#22577a"/>
+    <rect x="422" y="69" width="34" height="99" rx="4" fill="#0f766e"/>
+
+    <!-- Fila 2 -->
+    <rect x="198" y="179" width="30" height="100" rx="4" fill="#22577a"/>
+    <rect x="234" y="179" width="38" height="100" rx="4" fill="#0f766e"/>
+    <rect x="278" y="179" width="26" height="100" rx="4" fill="#d66b1f"/>
+    <rect x="310" y="179" width="34" height="100" rx="4" fill="#22577a"/>
+    <rect x="350" y="179" width="24" height="100" rx="4" fill="#0f766e"/>
+    <rect x="380" y="179" width="36" height="100" rx="4" fill="#d66b1f"/>
+    <rect x="422" y="179" width="34" height="100" rx="4" fill="#22577a"/>
+
+    <!-- Fila 3 -->
+    <rect x="198" y="290" width="36" height="99" rx="4" fill="#d66b1f"/>
+    <rect x="240" y="290" width="28" height="99" rx="4" fill="#22577a"/>
+    <rect x="274" y="290" width="34" height="99" rx="4" fill="#0f766e"/>
+    <rect x="314" y="290" width="26" height="99" rx="4" fill="#d66b1f"/>
+    <rect x="346" y="290" width="40" height="99" rx="4" fill="#22577a"/>
+    <rect x="392" y="290" width="30" height="99" rx="4" fill="#0f766e"/>
+    <rect x="428" y="290" width="28" height="99" rx="4" fill="#d66b1f"/>
   </g>
 
-  <!-- Sun body -->
-  <circle cx="320" cy="172" r="72" fill="url(#sun)"/>
-
-  <!-- Eyes -->
-  <circle cx="298" cy="158" r="9" fill="#5c3a00"/>
-  <circle cx="342" cy="158" r="9" fill="#5c3a00"/>
-  <circle cx="301" cy="155" r="3.5" fill="#fff"/>
-  <circle cx="345" cy="155" r="3.5" fill="#fff"/>
-
-  <!-- Smile -->
-  <path d="M296 185 Q320 208 344 185" stroke="#5c3a00" stroke-width="5" fill="none" stroke-linecap="round"/>
-
-  <!-- Cheeks -->
-  <ellipse cx="281" cy="178" rx="12" ry="7" fill="#f08030" opacity="0.35"/>
-  <ellipse cx="359" cy="178" rx="12" ry="7" fill="#f08030" opacity="0.35"/>
-
   <!-- Text -->
-  <text x="320" y="345" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="52" font-weight="800" fill="#ffffff" letter-spacing="1">bibliojocs</text>
-
+  <text x="320" y="366" text-anchor="middle" font-family="Outfit, Arial, sans-serif" font-size="42" font-weight="800" fill="#22577a" letter-spacing="0.5">Banc de recursos</text>
 </svg>
