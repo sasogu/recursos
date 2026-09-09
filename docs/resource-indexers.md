@@ -75,10 +75,13 @@ El metadato original del proveedor **nunca se pierde**: queda en `metadata_json`
 - `/v1/contents/{id}` → 403 (requiere registro); `/v1/contents/{id}/export` → 302 (`.h5p`).
 - `download_url` = `/contents/{id}/export`; `license`/`license_known` rellenos desde el item.
 - **Filtro de calidad** (`_is_eligible`): se indexan los idiomas de la UE +
-  catalán/valenciano y aranés (`taxonomy.LANGUAGES`); se descartan los fuera del
-  vocabulario (ruso, chino, turco...). Edad: se aceptan los recursos sin edad o
-  no-adultos; se descarta el contenido claramente adulto (`_age_is_eligible`,
+  catalán/valenciano, aranés, euskera y gallego (`H5P_INDEX_LANGS`); se descartan
+  el resto (ruso, chino, turco, árabe...). Edad: se aceptan los recursos sin edad
+  o no-adultos; se descarta el contenido claramente adulto (`_age_is_eligible`,
   mín ≥ 18).
+- **Idioma abierto en el resto de proveedores** (`taxonomy.language_code`):
+  JClic/SCORM conservan cualquier código ISO de 2-3 letras (eu, gl, la, ar, eo,
+  zh...), no solo los de la UE; solo H5P restringe su catálogo de idiomas.
 
 ### SCORM
 - No hay repositorio central. Se ingiere por URL (`sync scorm --url=...`) o desde
