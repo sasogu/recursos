@@ -1,4 +1,4 @@
-const CACHE_NAME = "recursos-v1.8.0";
+const CACHE_NAME = "recursos-v1.9.0";
 const APP_SHELL = [
   "./",
   "./index.html",
@@ -16,6 +16,7 @@ const APP_SHELL = [
   "./assets/brand/edutictac-logo.png",
   "./assets/brand/icon-192.png",
   "./assets/brand/icon-512.png",
+  "./favicon.ico",
   "./assets/game-images/generic-game.svg",
   "./assets/flash/aulademusica24aranas.swf",
   "./assets/flash/aulademusicaenriqueta.swf",

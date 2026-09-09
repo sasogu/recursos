@@ -35,7 +35,6 @@ const grid = document.querySelector("#grid");
 const loadMoreBtn = document.querySelector("#loadMoreBtn");
 const resultCount = document.querySelector("#resultCount");
 const emptyState = document.querySelector("#emptyState");
-const statusStrip = document.querySelector("#statusStrip");
 const offlineBanner = document.querySelector("#offlineBanner");
 const personalPrefsNote = document.querySelector("#personalPrefsNote");
 const authPanel = document.querySelector("#authPanel");
@@ -77,8 +76,6 @@ state._onAuthChange = () => {
 
 boot().catch((error) => {
   console.error("No se pudo iniciar la aplicacion", error);
-  statusStrip.textContent = i18n("boot_error");
-  statusStrip.classList.add("warn");
 });
 
 async function boot() {
@@ -113,11 +110,6 @@ async function boot() {
     if (report && Array.isArray(report.results)) {
       state.reportByUrl = buildReportIndex(report.results);
       state.reportSummary = report.summary || null;
-      state.lastReport = report;
-      setReportBanner(report);
-    } else {
-      statusStrip.textContent = i18n("status_no_report");
-      statusStrip.classList.add("warn");
     }
 
     hydrateFilterOptions();
@@ -195,26 +187,6 @@ function showMore() {
   const remaining = state.filtered.length - state.visibleCount;
   loadMoreBtn.classList.toggle("hidden", remaining <= 0);
   if (remaining > 0) loadMoreBtn.textContent = i18n("load_more", remaining);
-}
-
-function setReportBanner(report) {
-  const checked = Number(report.summary?.checked || 0);
-  const errorCount = Number(report.summary?.errorCount || 0);
-  const warningCount = Number(report.summary?.warningCount || 0);
-  const locale = getLang() === "ca" ? "ca" : "es-ES";
-  const generatedAt = report.generatedAt ? new Date(report.generatedAt) : null;
-  const dateText = generatedAt && !Number.isNaN(generatedAt.valueOf())
-    ? generatedAt.toLocaleString(locale)
-    : getLang() === "ca" ? "data desconeguda" : "fecha desconocida";
-
-  statusStrip.classList.remove("warn", "ok");
-  if (errorCount > 0 || warningCount > 0) {
-    statusStrip.textContent = i18n("status_warn", checked, errorCount, warningCount, dateText);
-    statusStrip.classList.add("warn");
-    return;
-  }
-  statusStrip.textContent = i18n("status_ok", checked, dateText);
-  statusStrip.classList.add("ok");
 }
 
 function updateAuthUi() {
@@ -331,12 +303,6 @@ function wireEvents() {
       updatePreferencesNote();
       updateAuthUi();
       updateLoginBtn();
-      if (state.lastReport) {
-        setReportBanner(state.lastReport);
-      } else {
-        statusStrip.className = "status-strip warn";
-        statusStrip.textContent = i18n("status_no_report");
-      }
       render();
     });
   });
