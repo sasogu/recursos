@@ -100,6 +100,8 @@
       <div id="authPanel" class="auth-panel hidden" aria-live="polite">
         <div class="auth-actions">
           <a id="loginBtn" class="btn-auth secondary" href="/api/auth/login" data-i18n="login_btn">Entrar</a>
+          <button id="studentLoginBtn" type="button" class="btn-auth secondary" data-i18n="student_login_btn">Alumnado</button>
+          <button id="studentLogoutBtn" type="button" class="btn-auth secondary hidden">Salir alumnado</button>
           <button id="submitActivityBtn" type="button" class="btn-auth secondary hidden" data-i18n="submit_btn">Proponer actividad</button>
         </div>
       </div>
@@ -271,6 +273,31 @@
       <div class="submit-actions">
         <button type="button" id="submitCancelBtn" class="btn-auth secondary" data-i18n="submit_cancel">Cancelar</button>
         <button type="submit" id="submitSendBtn" class="btn-auth" data-i18n="submit_send">Enviar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="studentDialog" class="submit-dialog" aria-labelledby="studentDialogTitle">
+    <h2 id="studentDialogTitle" class="submit-dialog-title" data-i18n="student_dialog_title">Entrar con credencial de alumnado</h2>
+    <form id="studentForm">
+      <div class="submit-fields">
+        <label>
+          <span data-i18n="student_group_label">Código de grupo</span>
+          <input id="studentGroup" type="text" required autocomplete="off" />
+        </label>
+        <label>
+          <span data-i18n="student_code_label">Código público</span>
+          <input id="studentCode" type="text" required autocomplete="off" maxlength="12" />
+        </label>
+        <label>
+          <span data-i18n="student_pin_label">PIN</span>
+          <input id="studentPin" type="password" required inputmode="numeric" autocomplete="off" />
+        </label>
+      </div>
+      <p id="studentFeedback" class="submit-feedback hidden" aria-live="polite"></p>
+      <div class="submit-actions">
+        <button type="button" id="studentCancelBtn" class="btn-auth secondary" data-i18n="submit_cancel">Cancelar</button>
+        <button type="submit" id="studentSendBtn" class="btn-auth" data-i18n="student_send">Entrar</button>
       </div>
     </form>
   </dialog>

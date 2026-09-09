@@ -189,3 +189,18 @@ export async function authMe() {
     return { logged_in: false, admin: false, sub: "" };
   }
 }
+
+export async function studentLogin({ groupId, publicCode, pin }) {
+  return api("/student/login", {
+    method: "POST",
+    body: {
+      group_id: groupId,
+      public_code: publicCode,
+      pin,
+    },
+  });
+}
+
+export async function studentLogout() {
+  return api("/student/logout", { method: "POST" });
+}

@@ -11,6 +11,7 @@ import {
   initPreferenceBackend, loadSubmissions,
   toggleFavoritePreference, setRatingPreference, reportBroken,
   hideResource, isAdmin, submitActivity, loadSources, authMe,
+  studentLogin, studentLogout,
 } from "./api.js";
 
 const dataUrl = "./data/games.json";
@@ -39,6 +40,16 @@ const offlineBanner = document.querySelector("#offlineBanner");
 const personalPrefsNote = document.querySelector("#personalPrefsNote");
 const authPanel = document.querySelector("#authPanel");
 const loginBtn = document.querySelector("#loginBtn");
+const studentLoginBtn = document.querySelector("#studentLoginBtn");
+const studentLogoutBtn = document.querySelector("#studentLogoutBtn");
+const studentDialog = document.querySelector("#studentDialog");
+const studentForm = document.querySelector("#studentForm");
+const studentGroupInput = document.querySelector("#studentGroup");
+const studentCodeInput = document.querySelector("#studentCode");
+const studentPinInput = document.querySelector("#studentPin");
+const studentCancelBtn = document.querySelector("#studentCancelBtn");
+const studentFeedback = document.querySelector("#studentFeedback");
+const studentSendBtn = document.querySelector("#studentSendBtn");
 const sourcesPanel = document.querySelector("#sourcesPanel");
 const sourcesList = document.querySelector("#sourcesList");
 const submitActivityBtn = document.querySelector("#submitActivityBtn");
@@ -243,6 +254,13 @@ async function updateLoginBtn() {
     loginBtn.href = "/api/auth/login";
     loginBtn.textContent = i18n("login_btn");
   }
+  if (studentLoginBtn) studentLoginBtn.classList.toggle("hidden", Boolean(me.student_logged_in));
+  if (studentLogoutBtn) {
+    studentLogoutBtn.classList.toggle("hidden", !me.student_logged_in);
+    studentLogoutBtn.textContent = me.student_logged_in
+      ? i18n("student_logout_btn", me.student_code || "")
+      : i18n("student_logout_default");
+  }
 }
 
 function updateLangButtons() {
@@ -293,6 +311,15 @@ function wireEvents() {
     });
   }
   if (submitForm) submitForm.addEventListener("submit", handleSubmitForm);
+  if (studentLoginBtn) studentLoginBtn.addEventListener("click", openStudentDialog);
+  if (studentLogoutBtn) studentLogoutBtn.addEventListener("click", handleStudentLogout);
+  if (studentCancelBtn) studentCancelBtn.addEventListener("click", () => studentDialog?.close());
+  if (studentDialog) {
+    studentDialog.addEventListener("click", (e) => {
+      if (e.target === studentDialog) studentDialog.close();
+    });
+  }
+  if (studentForm) studentForm.addEventListener("submit", handleStudentLogin);
 
   document.querySelectorAll(".btn-lang").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -361,4 +388,58 @@ function showSubmitFeedback(text, type) {
   if (!submitFeedback) return;
   submitFeedback.textContent = text;
   submitFeedback.className = `submit-feedback${type ? ` ${type}` : ""}`;
+}
+
+// --- Student identity dialog ---
+
+function openStudentDialog() {
+  if (!studentDialog) return;
+  studentForm?.reset();
+  showStudentFeedback("", "");
+  studentDialog.showModal();
+  studentGroupInput?.focus();
+}
+
+async function handleStudentLogin(e) {
+  e.preventDefault();
+  const groupId = studentGroupInput?.value.trim() || "";
+  const publicCode = studentCodeInput?.value.trim() || "";
+  const pin = studentPinInput?.value.trim() || "";
+  if (!groupId || !publicCode || !pin) {
+    showStudentFeedback(i18n("student_login_missing"), "error");
+    return;
+  }
+  if (studentSendBtn) studentSendBtn.disabled = true;
+  showStudentFeedback(i18n("student_login_loading"), "");
+  try {
+    await studentLogin({ groupId, publicCode, pin });
+    await initPreferenceBackend();
+    await updateLoginBtn();
+    render();
+    showStudentFeedback(i18n("student_login_success"), "ok");
+    setTimeout(() => studentDialog?.close(), 900);
+  } catch (error) {
+    console.error("Error en iniciar sessio d'alumnat", error);
+    showStudentFeedback(i18n("student_login_error"), "error");
+  } finally {
+    if (studentSendBtn) studentSendBtn.disabled = false;
+  }
+}
+
+async function handleStudentLogout() {
+  if (studentLogoutBtn) studentLogoutBtn.disabled = true;
+  try {
+    await studentLogout();
+    await initPreferenceBackend();
+    await updateLoginBtn();
+    render();
+  } finally {
+    if (studentLogoutBtn) studentLogoutBtn.disabled = false;
+  }
+}
+
+function showStudentFeedback(text, type) {
+  if (!studentFeedback) return;
+  studentFeedback.textContent = text;
+  studentFeedback.className = `submit-feedback${type ? ` ${type}` : ""}${text ? "" : " hidden"}`;
 }
