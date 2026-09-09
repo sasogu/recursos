@@ -74,9 +74,10 @@ El metadato original del proveedor **nunca se pierde**: queda en `metadata_json`
   `preview_url`, `downloads`, `size`, `updated_at`.
 - `/v1/contents/{id}` → 403 (requiere registro); `/v1/contents/{id}/export` → 302 (`.h5p`).
 - `download_url` = `/contents/{id}/export`; `license`/`license_known` rellenos desde el item.
-- **Filtro de calidad** (`_is_eligible`): solo se indexa es/ca (`ELIGIBLE_LANGS`) y
-  edad escolar (`_age_is_school`: min ≤ 16, máx ≤ 18). El hub es mayoritariamente
-  contenido universitario/adulto en ru/de/en; sin filtro diluye el banco.
+- **Filtro de calidad** (`_is_eligible`): solo se indexa es/ca/en/fr
+  (`ELIGIBLE_LANGS`) y edad escolar (`_age_is_school`: min ≤ 16, máx ≤ 18). El
+  hub es mayoritariamente contenido universitario/adulto en ru/de; sin filtro
+  diluye el banco.
 
 ### SCORM
 - No hay repositorio central. Se ingiere por URL (`sync scorm --url=...`) o desde
