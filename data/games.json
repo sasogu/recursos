@@ -32,7 +32,11 @@
   "id": "blockly-laberint",
   "title": "Blockly: Laberintmòbil",
   "area": "Matematicas",
-  "language": "Castellano",
+  "language": [
+   "Castellano",
+   "Català/Valencià",
+   "Ingles"
+  ],
   "url": "https://blockly.games/maze",
   "notes": "Per aprendre a programar, molt interessant.",
   "levels": [
