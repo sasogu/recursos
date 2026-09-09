@@ -207,13 +207,18 @@ Los enlaces actuales (`play_url`) apuntan al tercero (`clic.xtec.cat` para JClic
 puntuaciones ni progreso**. La captura (LRS/xAPI) requiere el **visor en local**
 dentro de `recursos.edutictac.es`:
 
-- **JClic**: visor `jclic.js` local que carga el proyecto remoto de
-  `clic.xtec.cat` (patrón "repo ajeno + visor local", ya en uso en
-  `jclic.edutictac.es`). No hay que descargar el catálogo; un reporter
-  (`XApiReporter`) emite el progreso desde nuestro dominio. Pendiente: confirmar
-  CORS de `clic.xtec.cat`.
+- **JClic — visor local implementado (2026-09-09)**: `jclic.html` + bundle
+  `assets/jclic/jclic.min.js` (autoalojado). El provider genera
+  `play_url = /jclic.html?project=<URL del .jclic remoto>&title=<título>`, y el
+  visor carga el proyecto remoto de `clic.xtec.cat` con
+  `JClicObject.loadProject(...)`. Confirmado: `clic.xtec.cat` sirve los `.jclic`
+  con `Access-Control-Allow-Origin: *`. Siguiente paso: reporter
+  (`XApiReporter`) para emitir xAPI.
 - **H5P**: autohospedado con `h5p-standalone`. Para el catálogo federado del
   hub, **import on-demand** (descarga del `.h5p` + descompresión segura + servei
   local) cuando una actividad se añade a un itinerario, no todo el catálogo.
 
 Diseño completo en `PROGRES-EDUCATIU.md` del repo `edutictac-commons`.
+Nota: el bundle distribuido por `clic.xtec.cat` se identifica como
+`jclic v2.3.0` con cabecera **MIT** (pendiente de confirmar frente al EUPL 1.2
+citado en la documentación del Commons).
