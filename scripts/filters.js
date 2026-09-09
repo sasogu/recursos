@@ -48,7 +48,14 @@ export function buildReportIndex(results) {
 
 export function isBrokenByReportItem(reportItem) {
   if (!reportItem || reportItem.ok) return false;
-  return reportItem.severity === "error" || Number(reportItem.httpStatus || 0) >= 500;
+  const status = Number(reportItem.httpStatus || 0);
+  // 401/403 suelen ser bloqueos anti-bot (WAF/Cloudflare) o recursos que exigen
+  // sesión: cargan en el navegador → falso positivo, no se ocultan.
+  if (status === 401 || status === 403) return false;
+  if (status >= 500) return true;
+  if (status === 404 || status === 410) return true;
+  // Error de red sin código HTTP (DNS/TLS/conexión rechazada) → roto.
+  return reportItem.severity === "error";
 }
 
 export function gameKey(game) {

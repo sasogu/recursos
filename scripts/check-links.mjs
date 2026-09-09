@@ -102,7 +102,9 @@ async function checkUrl(url) {
     redirect: "follow",
     signal: controller.signal,
     headers: {
-      "user-agent": "BibliojocsLinkChecker/1.0 (+https://recursos.edutictac.es/)"
+      "user-agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/126.0.0.0 Safari/537.36",
+      "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8",
+      "accept-language": "ca,es;q=0.8,en;q=0.6"
     }
   };
 
@@ -153,6 +155,12 @@ function severityFromStatus(status) {
   }
 
   if (status === 429) {
+    return "warning";
+  }
+
+  // 401/403 suelen ser bloqueos anti-bot (WAF/Cloudflare) o recursos que
+  // exigen sesión: el enlace carga en navegador → falso positivo, no "roto".
+  if (status === 401 || status === 403) {
     return "warning";
   }
 
