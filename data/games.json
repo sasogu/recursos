@@ -997,19 +997,6 @@
   "notes_ca": "Activitat interactiva per a practicar llengua en Primària 1r cicle."
  },
  {
-  "id": "congela-fracciones",
-  "title": "Congela fracciones",
-  "area": "Matematicas",
-  "language": "Ingles",
-  "url": "https://www.teachingmoney.co.uk/tasters/fractionfreeze.html",
-  "notes": "Actividad interactiva para practicar matematicas en Primaria 2o ciclo, Primaria 3er ciclo.",
-  "levels": [
-   "Primaria 2o ciclo",
-   "Primaria 3er ciclo"
-  ],
-  "imageSource": "https://www.teachingmoney.co.uk/tasters/fractionfreeze.html"
- },
- {
   "id": "contar",
   "title": "Contar",
   "area": "Matematicas",
@@ -2745,18 +2732,6 @@
   "imageSource": "https://clic.xtec.cat/projects/phonics/jclic.js/index.html"
  },
  {
-  "id": "pirate-puzzles",
-  "title": "Pirate puzzles",
-  "area": "Matematicas",
-  "language": "Ingles",
-  "url": "https://www.teachingmoney.co.uk/tasters/puzzadd.html",
-  "notes": "Actividad interactiva para practicar matematicas en Primaria 2o ciclo.",
-  "levels": [
-   "Primaria 2o ciclo"
-  ],
-  "imageSource": "https://www.teachingmoney.co.uk/tasters/puzzadd.html"
- },
- {
   "id": "poemas-de-navidad",
   "title": "Poemas de Navidad",
   "area": "Dias especiales",
@@ -3267,18 +3242,6 @@
   "notes_ca": "Activitat interactiva per a practicar matemàtiques en Infantil, Primària 1r cicle."
  },
  {
-  "id": "suma-fracciones",
-  "title": "Suma fracciones",
-  "area": "Matematicas",
-  "language": "Ingles",
-  "url": "https://www.teachingmoney.co.uk/tasters/irfball.html",
-  "notes": "Actividad interactiva para practicar matematicas en Primaria 3er ciclo.",
-  "levels": [
-   "Primaria 3er ciclo"
-  ],
-  "imageSource": "https://www.teachingmoney.co.uk/tasters/irfball.html"
- },
- {
   "id": "superdomino",
   "title": "Superdómino",
   "area": "Matematicas",
@@ -3321,18 +3284,6 @@
   ],
   "image": "assets/game-images/take-your-time.png",
   "imageSource": "https://www.edu365.cat/interactius/time/index.html"
- },
- {
-  "id": "take-your-time-2",
-  "title": "Take your time",
-  "area": "Matematicas",
-  "language": "Ingles",
-  "url": "https://www.teachingmoney.co.uk/tasters/taketime1.html",
-  "notes": "Actividad interactiva para practicar matematicas en Primaria 2o ciclo.",
-  "levels": [
-   "Primaria 2o ciclo"
-  ],
-  "imageSource": "https://www.teachingmoney.co.uk/tasters/taketime1.html"
  },
  {
   "id": "tangram-catalogo",
@@ -3580,19 +3531,6 @@
   "imageSource": "https://clic.xtec.cat/projects/accions/jclic.js/index.html",
   "title_ca": "Vocabulari d'accions",
   "notes_ca": "Activitat interactiva per a practicar llengua en Primària 2n cicle."
- },
- {
-  "id": "wipeout-wall",
-  "title": "Wipeout wall",
-  "area": "Matematicas",
-  "language": "Ingles",
-  "url": "https://www.teachingmoney.co.uk/tasters/wipeoutmnf.html",
-  "notes": "Actividad interactiva para practicar matematicas en Primaria 1er ciclo, Primaria 2o ciclo.",
-  "levels": [
-   "Primaria 1er ciclo",
-   "Primaria 2o ciclo"
-  ],
-  "imageSource": "https://www.teachingmoney.co.uk/tasters/wipeoutmnf.html"
  },
  {
   "id": "edu365-sant-jordi-2026",
