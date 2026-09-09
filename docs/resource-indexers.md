@@ -199,3 +199,21 @@ curado (`legacy`).
   conserva el raw para depuración.
 - **JClic**: `projects.json` no documentado como API estable; verificar
   periódicamente que la URL sigue activa.
+
+## Reproducción y captura de resultados (JClic / H5P)
+
+Los enlaces actuales (`play_url`) apuntan al tercero (`clic.xtec.cat` para JClic,
+`hub-api.h5p.org` para H5P) y se abren cross-origin: **no permiten capturar
+puntuaciones ni progreso**. La captura (LRS/xAPI) requiere el **visor en local**
+dentro de `recursos.edutictac.es`:
+
+- **JClic**: visor `jclic.js` local que carga el proyecto remoto de
+  `clic.xtec.cat` (patrón "repo ajeno + visor local", ya en uso en
+  `jclic.edutictac.es`). No hay que descargar el catálogo; un reporter
+  (`XApiReporter`) emite el progreso desde nuestro dominio. Pendiente: confirmar
+  CORS de `clic.xtec.cat`.
+- **H5P**: autohospedado con `h5p-standalone`. Para el catálogo federado del
+  hub, **import on-demand** (descarga del `.h5p` + descompresión segura + servei
+  local) cuando una actividad se añade a un itinerario, no todo el catálogo.
+
+Diseño completo en `PROGRES-EDUCATIU.md` del repo `edutictac-commons`.
