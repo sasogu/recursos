@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Banc de recursos · JClic</title>
+<meta name="theme-color" content="#22577a">
+<link rel="icon" href="/favicon.ico" sizes="32x32">
+<style>
+:root {
+  color-scheme: light;
+  --bar-height: 60px;
+  --bg: #fff8e8;
+  --panel: #ffffff;
+  --line: #e3ded2;
+  --text: #1d252c;
+  --muted: #607080;
+  --accent: #22577a;
+  --accent-strong: #0f4e6e;
+}
+html, body { width: 100%; height: 100%; margin: 0; }
+body { background: var(--bg); color: var(--text); font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+.player-shell { height: 100%; display: flex; flex-direction: column; }
+.topbar {
+  height: var(--bar-height);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  box-sizing: border-box;
+  background: var(--panel);
+  border-bottom: 1px solid var(--line);
+}
+.topbar-actions { display: flex; align-items: center; gap: 10px; }
+.topbar-title { min-width: 0; }
+.topbar-name {
+  margin: 0;
+  font-size: 17px;
+  font-weight: 700;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.topbar-button {
+  appearance: none;
+  border: 1px solid var(--line);
+  background: #fff;
+  color: var(--text);
+  height: 40px;
+  padding: 0 14px;
+  border-radius: 999px;
+  font: inherit;
+  cursor: pointer;
+  white-space: nowrap;
+}
+.topbar-button:hover { border-color: var(--accent); color: var(--accent-strong); }
+.topbar-button.primary { background: var(--accent); border-color: var(--accent); color: #fff; }
+.topbar-button.primary:hover { background: var(--accent-strong); border-color: var(--accent-strong); color: #fff; }
+.player { flex: 1 1 auto; }
+.JClic { width: 100%; height: 100%; }
+.JClic:fullscreen { width: 100vw; height: 100vh; }
+.error {
+  max-width: 720px;
+  margin: 40px auto;
+  padding: 18px;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+@media (max-width: 720px) {
+  .topbar { grid-template-columns: 1fr; height: auto; padding: 10px 12px; }
+  .topbar-actions { justify-content: space-between; }
+  .topbar-name { white-space: normal; }
+}
+</style>
+<script>
+window.JClicDataOptions = { noInit: true };
+</script>
+<script src="assets/jclic/jclic.min.js"></script>
+</head>
+<body>
+<div class="player-shell">
+  <header class="topbar">
+    <div class="topbar-actions">
+      <button id="backButton" class="topbar-button" type="button">Torna</button>
+    </div>
+    <div class="topbar-title">
+      <p id="activityName" class="topbar-name">JClic</p>
+    </div>
+    <div class="topbar-actions">
+      <button id="fullscreenButton" class="topbar-button primary" type="button">Pantalla completa</button>
+    </div>
+  </header>
+  <div id="player" class="player JClic"></div>
+</div>
+<script>
+const params = new URLSearchParams(window.location.search);
+const project = params.get('project');
+const title = params.get('title');
+const player = document.getElementById('player');
+const activityName = document.getElementById('activityName');
+const backButton = document.getElementById('backButton');
+const fullscreenButton = document.getElementById('fullscreenButton');
+
+function decodeTitle() {
+  if (title) return title.trim() || 'JClic';
+  if (!project) return 'JClic';
+  const fileName = decodeURIComponent(project).split('/').pop() || project;
+  return fileName.replace(/\.jclic(\.zip)?$/i, '').replace(/[_-]+/g, ' ').trim() || 'JClic';
+}
+
+function updateFullscreenButton() {
+  fullscreenButton.textContent = document.fullscreenElement
+    ? 'Sortir de pantalla completa'
+    : 'Pantalla completa';
+}
+
+backButton.addEventListener('click', () => {
+  if (window.history.length > 1) {
+    window.history.back();
+    return;
+  }
+  window.location.href = '/';
+});
+
+fullscreenButton.addEventListener('click', async () => {
+  try {
+    if (document.fullscreenElement) {
+      await document.exitFullscreen();
+    } else if (player.requestFullscreen) {
+      await player.requestFullscreen();
+    }
+  } catch (error) {
+    console.error('No es va poder canviar el mode de pantalla completa.', error);
+  }
+});
+
+document.addEventListener('fullscreenchange', updateFullscreenButton);
+
+if (!project) {
+  player.className = 'error';
+  player.textContent = 'No s\'ha indicat cap activitat JClic.';
+  activityName.textContent = 'Sense activitat';
+} else {
+  activityName.textContent = decodeTitle();
+  document.title = `${decodeTitle()} · Banc de recursos`;
+  window.JClicObject.loadProject(player, project);
+}
+
+updateFullscreenButton();
+</script>
+</body>
+</html>
