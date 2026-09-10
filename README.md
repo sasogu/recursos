@@ -232,10 +232,10 @@ npm run deploy:dry
 
 | Variable | Per defecte | Descripció |
 |----------|-------------|------------|
-| `DEPLOY_HOST` | `edutictac.es` | Host del servidor |
-| `DEPLOY_USER` | `samgua` | Usuari SSH |
-| `DEPLOY_PORT` | `2222` | Port SSH |
-| `DEPLOY_PATH` | `/var/www/recursos` | Ruta remota |
+| `DEPLOY_HOST` | `example.org` | Host del servidor |
+| `DEPLOY_USER` | `user` | Usuari SSH |
+| `DEPLOY_PORT` | `22` | Port SSH |
+| `DEPLOY_PATH` | `/var/www/example` | Ruta remota |
 | `DEPLOY_SSH_KEY` | — | Clau privada SSH |
 | `DRY_RUN=1` | — | Simula sense copiar |
 | `SKIP_LINKS=1` | — | Omet la verificació d'enllaços |
