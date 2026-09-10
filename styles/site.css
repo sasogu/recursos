@@ -626,6 +626,7 @@ select:focus {
   background: #f5fdfb;
 }
 
+.teacher-panel,
 .sources-panel {
   margin: 2rem auto;
   padding: 1rem 1.2rem;
@@ -634,9 +635,32 @@ select:focus {
   background: #f7fafc;
 }
 
+.teacher-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.teacher-panel p {
+  margin: 0.2rem 0 0;
+  color: var(--ink-soft);
+  font-size: 0.9rem;
+}
+
+.teacher-panel.hidden {
+  display: none;
+}
+
+.teacher-panel h2,
 .sources-panel h2 {
   margin: 0 0 0.6rem;
   font-size: 1rem;
+}
+
+.teacher-panel h2 {
+  margin-bottom: 0;
 }
 
 .sources-list {
@@ -763,6 +787,58 @@ select:focus {
   justify-content: flex-end;
   gap: 0.5rem;
   margin-top: 1rem;
+}
+
+.batch-dialog {
+  width: min(720px, 96vw);
+}
+
+.batch-fields {
+  grid-template-columns: minmax(0, 1fr) minmax(140px, 180px);
+}
+
+.credential-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 0.6rem;
+  margin-top: 1rem;
+}
+
+.credential-card {
+  border: 1px dashed #9fb3c8;
+  border-radius: 8px;
+  padding: 0.7rem;
+  background: #fff;
+  display: grid;
+  gap: 0.25rem;
+  text-align: center;
+}
+
+.credential-card strong {
+  font-size: 1.35rem;
+  letter-spacing: 0.08em;
+}
+
+.credential-card span {
+  font-family: "Space Grotesk", sans-serif;
+  font-size: 1rem;
+}
+
+@media print {
+  body > *:not(.batch-dialog) {
+    display: none !important;
+  }
+  .batch-dialog {
+    position: static;
+    display: block;
+    width: 100%;
+    box-shadow: none;
+  }
+  .submit-actions,
+  .submit-feedback,
+  .batch-fields {
+    display: none !important;
+  }
 }
 
 .flash-dialog {

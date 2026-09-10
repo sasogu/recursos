@@ -203,3 +203,13 @@ export async function studentLogin({ publicCode, pin }) {
 export async function studentLogout() {
   return api("/student/logout", { method: "POST" });
 }
+
+export async function generateStudentBatch({ count, pinLength }) {
+  return api("/teacher/student-batches", {
+    method: "POST",
+    body: {
+      count,
+      pin_length: pinLength,
+    },
+  });
+}

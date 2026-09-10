@@ -186,8 +186,16 @@
       <p id="emptyState" class="empty hidden" data-i18n="empty">No hay resultados con los filtros actuales.</p>
     </section>
 
+    <section id="teacherPanel" class="teacher-panel hidden" aria-live="polite">
+      <div>
+        <h2 data-i18n="teacher_dashboard_title">Dashboard del profesorado</h2>
+        <p data-i18n="teacher_dashboard_text">Gestiona credenciales pseudónimas para que el alumnado use sus favoritos y valoraciones sin datos personales.</p>
+      </div>
+      <button id="generateStudentsBtn" type="button" class="btn-auth" data-i18n="generate_students_btn">Generar alumnado</button>
+    </section>
+
     <section id="sourcesPanel" class="sources-panel hidden" aria-live="polite">
-      <h2>Fuentes de recursos</h2>
+      <h2 data-i18n="sources_title">Fuentes de recursos</h2>
       <div id="sourcesList" class="sources-list"></div>
     </section>
   </main>
@@ -294,6 +302,32 @@
       <div class="submit-actions">
         <button type="button" id="studentCancelBtn" class="btn-auth secondary" data-i18n="submit_cancel">Cancelar</button>
         <button type="submit" id="studentSendBtn" class="btn-auth" data-i18n="student_send">Entrar</button>
+      </div>
+    </form>
+  </dialog>
+
+  <dialog id="batchDialog" class="submit-dialog batch-dialog" aria-labelledby="batchDialogTitle">
+    <h2 id="batchDialogTitle" class="submit-dialog-title" data-i18n="batch_dialog_title">Generar alumnado</h2>
+    <form id="batchForm">
+      <div class="submit-fields batch-fields">
+        <label>
+          <span data-i18n="batch_count_label">Número de credenciales</span>
+          <input id="batchCount" type="number" min="1" max="120" value="25" required />
+        </label>
+        <label>
+          <span data-i18n="batch_pin_length_label">Longitud del PIN</span>
+          <select id="batchPinLength">
+            <option value="4">4</option>
+            <option value="6">6</option>
+          </select>
+        </label>
+      </div>
+      <p id="batchFeedback" class="submit-feedback hidden" aria-live="polite"></p>
+      <div id="batchResult" class="batch-result hidden" aria-live="polite"></div>
+      <div class="submit-actions">
+        <button type="button" id="batchPrintBtn" class="btn-auth secondary hidden" data-i18n="batch_print">Imprimir</button>
+        <button type="button" id="batchCloseBtn" class="btn-auth secondary" data-i18n="submit_cancel">Cancelar</button>
+        <button type="submit" id="batchGenerateBtn" class="btn-auth" data-i18n="batch_generate">Generar</button>
       </div>
     </form>
   </dialog>

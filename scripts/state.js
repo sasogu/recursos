@@ -19,6 +19,7 @@ export const state = {
   userReports: new Set(),
   brokenSummary: new Map(),
   isAdmin: false,
+  isTeacher: false,
   backendMode: "local",
   authReady: false,
 };
