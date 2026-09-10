@@ -190,11 +190,10 @@ export async function authMe() {
   }
 }
 
-export async function studentLogin({ groupId, publicCode, pin }) {
+export async function studentLogin({ publicCode, pin }) {
   return api("/student/login", {
     method: "POST",
     body: {
-      group_id: groupId,
       public_code: publicCode,
       pin,
     },

@@ -44,7 +44,6 @@ const studentLoginBtn = document.querySelector("#studentLoginBtn");
 const studentLogoutBtn = document.querySelector("#studentLogoutBtn");
 const studentDialog = document.querySelector("#studentDialog");
 const studentForm = document.querySelector("#studentForm");
-const studentGroupInput = document.querySelector("#studentGroup");
 const studentCodeInput = document.querySelector("#studentCode");
 const studentPinInput = document.querySelector("#studentPin");
 const studentCancelBtn = document.querySelector("#studentCancelBtn");
@@ -397,22 +396,21 @@ function openStudentDialog() {
   studentForm?.reset();
   showStudentFeedback("", "");
   studentDialog.showModal();
-  studentGroupInput?.focus();
+  studentCodeInput?.focus();
 }
 
 async function handleStudentLogin(e) {
   e.preventDefault();
-  const groupId = studentGroupInput?.value.trim() || "";
   const publicCode = studentCodeInput?.value.trim() || "";
   const pin = studentPinInput?.value.trim() || "";
-  if (!groupId || !publicCode || !pin) {
+  if (!publicCode || !pin) {
     showStudentFeedback(i18n("student_login_missing"), "error");
     return;
   }
   if (studentSendBtn) studentSendBtn.disabled = true;
   showStudentFeedback(i18n("student_login_loading"), "");
   try {
-    await studentLogin({ groupId, publicCode, pin });
+    await studentLogin({ publicCode, pin });
     await initPreferenceBackend();
     await updateLoginBtn();
     render();
