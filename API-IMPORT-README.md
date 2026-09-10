@@ -155,7 +155,7 @@ const educativeGames = allGames.filter(g => g.source === 'LearningApps.org');
 ### Opción 3: Actualización programada (Cron)
 ```bash
 # Actualizar diariamente a las 2 AM
-0 2 * * * cd /home/sasogu/github/edubibliojocs && node scripts/import-educational-apis.mjs all
+0 2 * * * cd ~/github/edubibliojocs && node scripts/import-educational-apis.mjs all
 ```
 
 ## Mapeo de Categorías

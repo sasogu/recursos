@@ -11,8 +11,8 @@ import json
 import shutil
 from pathlib import Path
 
-JCLIC_ROOT = Path("/home/sasogu/github/JaumeBalmes2017_html5_JCLIC")
-BIBLIO_ROOT = Path("/home/sasogu/github/my_webapp__4")
+JCLIC_ROOT = Path.home() / "github/JaumeBalmes2017_html5_JCLIC"
+BIBLIO_ROOT = Path.home() / "github/my_webapp__4"
 JCLIC_BASE_URL = "https://jclic.edutictac.es/"
 IMAGE_DST_DIR = BIBLIO_ROOT / "assets" / "game-images" / "jclic"
 

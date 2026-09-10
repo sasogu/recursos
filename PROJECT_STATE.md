@@ -4,10 +4,10 @@ Fecha: 2026-09-08
 
 ## Repositorios
 
-- Frontend: `/home/daizan/github/web/recursos`
-- API: `/home/daizan/github/web/recursos-api`
-- Producción frontend: `/var/www/recursos`
-- Producción API: `/opt/recursos-api`
+- Frontend: `~/github/web/recursos`
+- API: `~/github/web/recursos-api`
+- Producción frontend: `/srv/www/recursos`
+- Producción API: `/srv/recursos-api`
 - Servicio API: `recursos-api.service` en `127.0.0.1:8004`, publicado bajo `https://recursos.edutictac.es/api/`
 
 ## Estado Actual
@@ -55,7 +55,7 @@ Frontend (`recursos`):
 
 ## Pendiente Conocido
 
-- En `/home/daizan/github/web/recursos` quedan cambios locales sin commit en:
+- En `~/github/web/recursos` quedan cambios locales sin commit en:
   - `data/games-home.json`
   - `data/games.json`
 - Esos cambios no se han tocado ni incluido en los commits de autenticación/admin.

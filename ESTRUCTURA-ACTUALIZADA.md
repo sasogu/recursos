@@ -39,7 +39,7 @@ scripts/
 ## 📁 Estructura Completa Actualizada
 
 ```
-/home/sasogu/github/edubibliojocs/
+~/github/edubibliojocs/
 │
 ├── 📄 index.html
 ├── 📄 manifest.json

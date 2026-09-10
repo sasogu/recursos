@@ -131,8 +131,8 @@ python -m app.cli export-catalog --games data/games.json --out-dir data/
 - Automatización (producción): timer systemd `recursos-sync.timer` (diario 04:15)
   → `recursos-sync.service` → `scripts/sync-and-export.sh` (sync jclic/h5p/eduhoot
   + `export-catalog` + copia de `games.json`/`games-home.json` a
-  `/var/www/recursos/data/`). El catálogo legacy original vive en
-  `/opt/recursos-api/data/games-legacy.json` (fuente del export, no el generado).
+  `/srv/www/recursos/data/`). El catálogo legacy original vive en
+  `/srv/recursos-api/data/games-legacy.json` (fuente del export, no el generado).
 
 ### Exportar al frontend (`export-catalog`)
 
